@@ -2,7 +2,7 @@ CC = cc
 NAME = cub3D
 MLX = libmlx42.a
 CFLAGS = -g -fsanitize=address #-Wall -Wextra -Werror
-LDFLAGS = -Iinclude -lglfw -L/Users/ataoufik/.brew/opt/glfw/lib/ -L. -lmlx42 -framework OpenGL -framework AppKit
+LDFLAGS = -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib" -L. -lmlx42 -framework OpenGL -framework AppKit
 RM = rm -f
 OBJ_DIR = obj
 SRC_DIR = src

@@ -29,11 +29,13 @@ void    fill_list(t_data *data, char *av)
     data->list = NULL;
     data->texturel = NULL;
     data->string = NULL;
+    data->map = malloc(sizeof(t_map));
     data->map->height = 0;
     data->map->width = 0;
     data->i = 0;
     data->j = 0;
     data->size = 0;
+    data->player = malloc(sizeof(t_player));
     data->player->x = 0.0;
     data->player->y = 1.0;
     data->player->isFacing = '0';
