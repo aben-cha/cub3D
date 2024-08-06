@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:57:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/06 21:25:12 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/06 22:23:21 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void    ft_projection3D(t_data *data,float x,int sig , t_ray *ray, double raydis
                 if (x >= 0 && x < data->mlx->width) 
                     mlx_put_pixel(data->player->img_player, x,y, texcolor);
             }
-            else if (sig != 0 && ray->ray_is_right== true)
+            else if (sig == 0 && ray->ray_is_right== true)
             {
                 int offset_y =((y - top_pixel) * data->player->walltexteur_s->width) / wallheight;
                 uint32_t texcolor = get_pixel_color(data->player->walltexteur_s, offset_x, offset_y);

@@ -130,7 +130,7 @@ int ft_check_wall_intersection(t_data *data ,float x , float y);
 // void ft_rays_horizontal(t_data *data, float ray_angle);
 
 
-
+void    border_map(t_data *data);
 
 // void draw_wall(t_data *data, int x, int y, int width, int height, double raydistance);
 

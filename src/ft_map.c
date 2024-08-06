@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:01:17 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/06 21:30:23 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/06 22:20:39 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,24 @@ void    ft_map(t_data *data)
         }
         i++;
     }
+    // border_map(data);
+}
+
+void    border_map(t_data *data)
+{
+    int i = 0;
+    int j = 0;
+    while (i < 200)
+    {
+        j = 0;
+        while (j < 200)
+        {
+            if (j == 0 || j == 199 || i == 0 || i == 199)
+                mlx_put_pixel(data->map->img_map,i,j,0x0000ACFF);
+            j++;
+        }
+        i++;
+    }
+
+    
 }
