@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/06 17:04:13 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/06 21:29:36 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void    inite_data_player(t_data *data)
 {
-    data->player->walltexteur = mlx_load_png("./wall_64.png");
-    if (!data->player->walltexteur)
+    data->player->walltexteur_n = mlx_load_png("./n.png");
+    data->player->walltexteur_s = mlx_load_png("./s.png");
+    data->player->walltexteur_w = mlx_load_png("./w.png");
+    data->player->walltexteur_e = mlx_load_png("./wall_64.png");
+    if (!data->player->walltexteur_n || !data->player->walltexteur_w ||!data->player->walltexteur_s ||!data->player->walltexteur_e)
     {
         printf("Error \"load png\"\n");
         exit(1);
@@ -51,10 +54,10 @@ int		main(int ac, char **av)
     parsing(&data_mlx, av[1]);
     data_mlx.mlx = mlx_init(WINDOW_WHIDTH,WINDOW_HEIGHT,"cub3D",0);
     data_mlx.player->img_player = mlx_new_image(data_mlx.mlx,data_mlx.mlx->width,data_mlx.mlx->height);
-    // ft_map(&data_mlx);
+    ft_map(&data_mlx);
     ft_player(&data_mlx);
-    // mlx_image_to_window(data_mlx.mlx,data_mlx.map->img_map,0,0);
     mlx_image_to_window(data_mlx.mlx,data_mlx.player->img_player,0,0);
+    mlx_image_to_window(data_mlx.mlx,data_mlx.map->img_map,0,0);
     mlx_loop_hook(data_mlx.mlx,ft_update_env,&data_mlx);
     mlx_loop(data_mlx.mlx);
     return 0;

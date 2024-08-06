@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:28:39 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/03 11:13:12 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/06 21:27:39 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ void    ft_cast_all_rays(t_data *data,int color)
         t_ray vertical;
         horizontal = ft_rays_horizontal(data ,ray,rayangle);
         vertical = ft_rays_vertical(data ,ray,rayangle);
+        horizontal.ray_is_down = rayangle > 0 && rayangle < M_PI;
+        horizontal.ray_is_up = !horizontal.ray_is_down;
+        horizontal.ray_is_right = rayangle < 0.5 * M_PI || rayangle > 1.5 * M_PI;
+        horizontal.ray_is_left = !horizontal.ray_is_right;
+        vertical.ray_is_down = rayangle > 0 && rayangle < M_PI;
+        horizontal.ray_is_up = !vertical.ray_is_down;
+        vertical.ray_is_right = rayangle < 0.5 * M_PI || rayangle > 1.5 * M_PI;
+        vertical.ray_is_left = !vertical.ray_is_right;
         float d_h = pow(horizontal.dx, 2) + pow(horizontal.dy , 2);
         float d_v = pow(vertical.dx, 2) + pow(vertical.dy  , 2);;
         if (d_h <= d_v)

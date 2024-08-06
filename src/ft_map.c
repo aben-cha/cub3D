@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:01:17 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/03 11:06:39 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/06 21:30:23 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void    ft_map(t_data *data)
             if (data->map->arr_map[i][j] == '1')
                 color = 0x000000FF;
             else
-                color = 0xF8F8FFFF;
+                color = 0;
             draw_rect(data,SIZE_MINI_MAP*tileX,SIZE_MINI_MAP*tileY,color);
             j++;
         }

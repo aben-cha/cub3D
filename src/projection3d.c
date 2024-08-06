@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:57:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/06 17:00:40 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/06 21:25:12 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ uint32_t get_pixel_color(mlx_texture_t *texture, int x, int y)
     if (x < 0 || x >= texture->width || y < 0 || y >= texture->height)
         return 0; 
     int index = (y * texture->width) + x;
-    return ((uint32_t *)texture->pixels)[index ];
+    
+    return ((uint32_t *)texture->pixels)[index];
 }
 
 void    ft_projection3D(t_data *data,float x,int sig , t_ray *ray, double raydistance)
@@ -75,15 +76,38 @@ void    ft_projection3D(t_data *data,float x,int sig , t_ray *ray, double raydis
     int y = top_pixel;
     ft_ceil(data,x,y);
     ft_floor(data,x,top_pixel + wallheight);
-
     while (y< (wallheight + top_pixel))
     {
         if (y >= 0 && y < data->mlx->height) 
         {
-            int offset_y =((y - top_pixel) * data->player->walltexteur->width) / wallheight;
-            uint32_t texcolor = get_pixel_color(data->player->walltexteur, offset_x, offset_y);
-            if (x >= 0 && x < data->mlx->width) 
-                mlx_put_pixel(data->player->img_player, x,y, texcolor);
+            if (sig == 0 && ray->ray_is_left == true)
+            {
+                int offset_y =((y - top_pixel) * data->player->walltexteur_n->width) / wallheight;
+                uint32_t texcolor = get_pixel_color(data->player->walltexteur_n, offset_x, offset_y);   
+                if (x >= 0 && x < data->mlx->width) 
+                    mlx_put_pixel(data->player->img_player, x,y, texcolor);
+            }
+            else if (sig != 0 && ray->ray_is_right== true)
+            {
+                int offset_y =((y - top_pixel) * data->player->walltexteur_s->width) / wallheight;
+                uint32_t texcolor = get_pixel_color(data->player->walltexteur_s, offset_x, offset_y);
+                if (x >= 0 && x < data->mlx->width) 
+                    mlx_put_pixel(data->player->img_player, x,y, texcolor);
+            }
+            else if (sig != 0 && ray->ray_is_up== true)
+            {
+                int offset_y =((y - top_pixel) * data->player->walltexteur_w->width) / wallheight;
+                uint32_t texcolor = get_pixel_color(data->player->walltexteur_w, offset_x, offset_y);
+                if (x >= 0 && x < data->mlx->width) 
+                    mlx_put_pixel(data->player->img_player, x,y, texcolor);
+            }
+            else
+            {
+                int offset_y =((y - top_pixel) * data->player->walltexteur_e->width) / wallheight;
+                uint32_t texcolor = get_pixel_color(data->player->walltexteur_e, offset_x, offset_y);   
+                if (x >= 0 && x < data->mlx->width) 
+                    mlx_put_pixel(data->player->img_player, x,y, texcolor);
+            }
         }
         y++;
     }
