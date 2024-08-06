@@ -36,6 +36,7 @@ void    fill_list(t_data *data, char *av)
     data->j = 0;
     data->size = 0;
     data->player = malloc(sizeof(t_player));
+    data->texture = malloc(sizeof(t_texture));
     data->player->x = 0.0;
     data->player->y = 1.0;
     data->player->isFacing = '0';
