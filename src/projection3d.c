@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projection3d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:57:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/06 22:23:21 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/07 12:21:55 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int    ft_color(int r, int g, int b, int a)
 void    ft_floor(t_data *data,int x, int start_y)
 {
     int j;
-    uint32_t floorcolor =0x20B2AAFF;
+    uint32_t floorcolor = ft_color(data->element.floor_color.red, data->element.floor_color.green, 
+    data->element.floor_color.blue, 255);
+
     j = start_y;
     while (j < data->mlx->height)
     {
@@ -36,7 +38,8 @@ void    ft_floor(t_data *data,int x, int start_y)
 void    ft_ceil(t_data *data,int x, int end_y)
 {
     int j;
-    uint32_t ceilcolor =0xD2BDBDFF;
+    uint32_t ceilcolor =ft_color(data->element.ceiling_color.red, data->element.ceiling_color.green, 
+    data->element.ceiling_color.blue, 255);
     j = 0;
     while (j < end_y)
     {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:01:17 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/06 22:20:39 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/07 11:58:24 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void    draw_rect(t_data *data,float size_x,float size_y , int color)
     while (x < TILE_SIZE)// - 1 px
     {
         y = 0;
-        while (y <TILE_SIZE)// - 1px 
+        while (y < TILE_SIZE)// - 1px 
         {
             mlx_put_pixel(data->map->img_map,size_x + x,size_y + y,color);
             y++;
