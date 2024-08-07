@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/06 22:19:07 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/07 11:05:52 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void    inite_data_player(t_data *data)
 {
-    data->player->walltexteur_n = mlx_load_png("./n.png");
-    data->player->walltexteur_s = mlx_load_png("./s.png");
-    data->player->walltexteur_w = mlx_load_png("./w.png");
-    data->player->walltexteur_e = mlx_load_png("./wall_64.png");
+    data->player->walltexteur_n = mlx_load_png(data->texture->north_texture);
+    data->player->walltexteur_s = mlx_load_png(data->texture->south_texture);
+    data->player->walltexteur_w = mlx_load_png(data->texture->west_texture);
+    data->player->walltexteur_e = mlx_load_png(data->texture->east_texture);
     if (!data->player->walltexteur_n || !data->player->walltexteur_w ||!data->player->walltexteur_s ||!data->player->walltexteur_e)
     {
         printf("Error \"load png\"\n");
@@ -48,8 +48,8 @@ void parsing(t_data *data, char *av)
 
 int		main(int ac, char **av)
 {
-    t_player    player;
-    t_map   map;
+    // t_player    player;
+    // t_map   map;
     t_data  data_mlx;
     parsing(&data_mlx, av[1]);
     data_mlx.mlx = mlx_init(WINDOW_WHIDTH,WINDOW_HEIGHT,"cub3D",0);

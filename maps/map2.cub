@@ -1,7 +1,7 @@
-NO textures/wall.xpm
-SO textures/wall.xpm
-WE textures/wall.xpm
-EA textures/wall.xpm
+NO ./n.png
+SO ./s.png
+  WE          ./w.png              
+      EA        ./wall_64.png
 
 F 184,113,39
 C 51,198,227

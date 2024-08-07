@@ -120,7 +120,7 @@ t_list  *get_map(t_data *data)
         s = data->list->content;
         handle_space(s, &data->j, &data->size);
         get_element(data, s + data->j, &data->size, &data->i);
-        if (data->i == 6)
+        if (data->i == 6 || s[data->j] == '1')
         {   
             if (data->list->next)
                 ptr = data->list->next;
@@ -128,9 +128,6 @@ t_list  *get_map(t_data *data)
                 ptr = ptr->next;
             break;
         }
-        // if (s[data->j] != '1' || s[data->j] == '1')
-        //     (ft_lstclear(&data->list), ft_lstclear(&data->texturel));
-        //         print_error("Invalid elements.");
         data->list = data->list->next;
     }
     setup_textures_colors(data);
