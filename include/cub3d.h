@@ -14,7 +14,7 @@
 #include "MLX42.h"
 #define WIDTH_TEXTUER 64
 #define HEIGHT_TEXTUER 64
-#define TILE_SIZE 1024
+#define TILE_SIZE 64
 #define NBR_RAYS 2000
 #define WINDOW_WHIDTH 2000 ///
 #define WINDOW_HEIGHT 900 ///

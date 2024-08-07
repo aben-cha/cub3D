@@ -1,4 +1,4 @@
-CC = cc
+CC = cc 
 NAME = cub3D
 MLX = libmlx42.a
 CFLAGS = -g -fsanitize=address #-Wall -Wextra -Werror
@@ -15,7 +15,7 @@ LIBFT = src/libft/libft.a
 all: $(NAME) 
 
 $(NAME): $(OBJ) $(MLX) $(LIBFT)
-	$(CC) $(OBJ) $(CFLAGS) $(LDFLAGS) -o $(NAME) $(LIBFT)
+	$(CC) -O3 $(OBJ) $(CFLAGS) $(LDFLAGS) -o $(NAME) $(LIBFT)
 $(LIBFT):
 	@$(MAKE) -C src/libft
 

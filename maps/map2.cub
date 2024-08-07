@@ -1,10 +1,10 @@
-NO ./Tileable1e.png
-SO ./Tileable1e.png
-  WE          ./Tileable1e.png             
-      EA        ./Tileable1e.png
+NO ./w.png
+SO ./w.png
+  WE          ./w.png           
+      EA        ./w.png
 
-F 255,0,0
-C 0,0,255
+F 0,51,25
+C 0,128,255
 
 11111111111111111111111111111
 10000000000000000001000010001

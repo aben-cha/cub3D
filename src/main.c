@@ -6,20 +6,50 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/07 12:43:39 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/08/07 15:04:57 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-// RGB  ==> BGR
-//0xffffff
-// 
+
+
+void convert_abgr_to_rgba(mlx_texture_t* texture)
+{
+    uint8_t* pixels;
+    uint32_t i;
+
+    
+    if (!texture || !texture->pixels)
+        return;
+    i = -1;
+    pixels = texture->pixels;
+    while (++i < texture->width * texture->height)
+    {
+        uint8_t a = pixels[4 * i + 0];
+        uint8_t b = pixels[4 * i + 1];
+        uint8_t g = pixels[4 * i + 2];
+        uint8_t r = pixels[4 * i + 3];
+        pixels[4 * i + 0] = r;
+        pixels[4 * i + 1] = g;
+        pixels[4 * i + 2] = b;
+        pixels[4 * i + 3] = a;
+    }
+}
+
 void    inite_data_player(t_data *data)
 {
+    
     data->player->walltexteur_n = mlx_load_png(data->texture->north_texture);
+    convert_abgr_to_rgba(data->player->walltexteur_n);
     data->player->walltexteur_s = mlx_load_png(data->texture->south_texture);
+    convert_abgr_to_rgba(data->player->walltexteur_s);
+
     data->player->walltexteur_w = mlx_load_png(data->texture->west_texture);
+    convert_abgr_to_rgba(data->player->walltexteur_w);
+
     data->player->walltexteur_e = mlx_load_png(data->texture->east_texture);
+    convert_abgr_to_rgba(data->player->walltexteur_e);
+
     if (!data->player->walltexteur_n || !data->player->walltexteur_w ||!data->player->walltexteur_s ||!data->player->walltexteur_e)
     {
         // ft_lstclear(data->texture);
@@ -29,7 +59,7 @@ void    inite_data_player(t_data *data)
     data->player->radius = 5;
     data->player->turnDirection = 0;
     data->player->walkDirection = 0;
-    data->player->moveSpeed = 50;
+    data->player->moveSpeed = 10;
     data->player->rotationSpeed = 5* (M_PI / 180);
     if (data->player->isFacing== 'N')
         data->player->rotationAngle =  3 * M_PI / 2;

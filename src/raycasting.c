@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:28:39 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/06 21:27:39 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/07 12:51:12 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ t_ray ft_rays_horizontal(t_data *data, t_ray *ray,float ray_angle)
         xstep *= -1;
     float new_x =x_intercept;
     float new_y =y_intercept;
-    while (1)
+    while(new_x >= 0 && new_x <= WINDOW_WHIDTH 
+		&& new_y >= 0 && new_y <= WINDOW_HEIGHT)
     {
         if (ft_check_wall(data, new_x , new_y - (ray->ray_is_up ?1:0))==1)
             break;
@@ -130,7 +131,8 @@ t_ray    ft_rays_vertical(t_data *data,t_ray *ray,float ray_angle)
         ystep *= -1;
     float new_x =x_intercept;
     float new_y =y_intercept;
-    while (1)
+    while (new_x >= 0 && new_x <= WINDOW_WHIDTH 
+		&& new_y >= 0 && new_y <= WINDOW_HEIGHT)
     {
         if (ft_check_wall(data, new_x - (ray->ray_is_left ?1:0 ), new_y)==1)
             break;
