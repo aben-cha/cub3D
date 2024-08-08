@@ -6,29 +6,34 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/07 15:04:57 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/08/08 18:21:32 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-
-void convert_abgr_to_rgba(mlx_texture_t* texture)
+void convert_abgr_to_rgba(t_data *data, mlx_texture_t* texture)
 {
-    uint8_t* pixels;
-    uint32_t i;
-
+    uint8_t     *pixels;
+    uint32_t    i;
+    uint8_t     a;
+    uint8_t     b;
+    uint8_t     g;
+    uint8_t     r;
     
     if (!texture || !texture->pixels)
-        return;
+    {
+        (free_array(data->map->arr_map), free_data(data, 1));
+        print_error("Texture or its pixels are not available.");
+    }
     i = -1;
     pixels = texture->pixels;
     while (++i < texture->width * texture->height)
     {
-        uint8_t a = pixels[4 * i + 0];
-        uint8_t b = pixels[4 * i + 1];
-        uint8_t g = pixels[4 * i + 2];
-        uint8_t r = pixels[4 * i + 3];
+        a = pixels[4 * i + 0];
+        b = pixels[4 * i + 1];
+        g = pixels[4 * i + 2];
+        r = pixels[4 * i + 3];
         pixels[4 * i + 0] = r;
         pixels[4 * i + 1] = g;
         pixels[4 * i + 2] = b;
@@ -36,26 +41,46 @@ void convert_abgr_to_rgba(mlx_texture_t* texture)
     }
 }
 
+void load_images(t_data *data)
+{
+    t_list *head;
+
+    head = data->texturel;
+    while (head)
+    {
+        if (head->c == 'N')
+        {
+            data->player->walltexteur_n = mlx_load_png(head->content);
+            convert_abgr_to_rgba(data, data->player->walltexteur_n); 
+        }
+        else if (head->c == 'S')
+        {
+            data->player->walltexteur_s = mlx_load_png(head->content);
+            convert_abgr_to_rgba(data, data->player->walltexteur_s);
+        }
+        else if (head->c == 'E')
+        {
+            data->player->walltexteur_e = mlx_load_png(head->content);
+            convert_abgr_to_rgba(data, data->player->walltexteur_e);
+        }
+        else if (head->c == 'W')
+        {
+            data->player->walltexteur_w = mlx_load_png(head->content);
+            convert_abgr_to_rgba(data, data->player->walltexteur_w);
+        }
+        if (!data->player->walltexteur_n || !data->player->walltexteur_w ||!data->player->walltexteur_s ||!data->player->walltexteur_e)
+        {
+            free_array(data->map->arr_map);
+            free_data(data, 1);
+            print_error("Error load png.");
+        }
+        head = head->next;
+    }
+}
+
 void    inite_data_player(t_data *data)
 {
-    
-    data->player->walltexteur_n = mlx_load_png(data->texture->north_texture);
-    convert_abgr_to_rgba(data->player->walltexteur_n);
-    data->player->walltexteur_s = mlx_load_png(data->texture->south_texture);
-    convert_abgr_to_rgba(data->player->walltexteur_s);
-
-    data->player->walltexteur_w = mlx_load_png(data->texture->west_texture);
-    convert_abgr_to_rgba(data->player->walltexteur_w);
-
-    data->player->walltexteur_e = mlx_load_png(data->texture->east_texture);
-    convert_abgr_to_rgba(data->player->walltexteur_e);
-
-    if (!data->player->walltexteur_n || !data->player->walltexteur_w ||!data->player->walltexteur_s ||!data->player->walltexteur_e)
-    {
-        // ft_lstclear(data->texture);
-        printf("Error \"load png\"\n");
-        exit(1);
-    }
+    load_images(data);
     data->player->radius = 5;
     data->player->turnDirection = 0;
     data->player->walkDirection = 0;
@@ -76,7 +101,6 @@ void parsing(t_data *data, char *av)
     fill_list(data, av);
     is_valid_Map(data);
     inite_data_player(data);
-    // print_elements(data);
 }
 
 int		main(int ac, char **av)
