@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projection3d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:57:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/08 17:09:26 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:16:34 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ uint32_t get_pixel_color(mlx_texture_t *texture, int x, int y)
     return ((uint32_t *)texture->pixels)[index];
 }
 
-void    ft_projection3D(t_data *data,float x,int sig , t_ray *ray, double raydistance)
+void    ft_projection3D(t_data *data,float x,int sig , t_ray *ray, float raydistance)
 {
 
-    double d_projectplan;
-    double wallheight;
+    float d_projectplan;
+    float wallheight;
     d_projectplan = (data->mlx->width / 2) * tan(FOV_ANGLE /2);
     wallheight = (TILE_SIZE / raydistance) * d_projectplan;
     uint32_t texcolor;

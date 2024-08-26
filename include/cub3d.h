@@ -12,15 +12,16 @@
 #include "../src/get_next_line/get_next_line.h"
 
 #include "MLX42.h"
-#define WIDTH_TEXTUER 64
-#define HEIGHT_TEXTUER 64
-#define TILE_SIZE 64
+#define WIDTH_TEXTUER 1024
+#define HEIGHT_TEXTUER 1024
+
+#define TILE_SIZE 1024
 #define NBR_RAYS 2000
 #define WINDOW_WHIDTH 2000 ///
 #define WINDOW_HEIGHT 900 ///
 #define WALL_STRIP_WIDTH 0.5
 #define SIZE_MINI_MAP 0.3
-#define FOV_ANGLE (98 * (M_PI / 180))
+#define FOV_ANGLE (60 * (M_PI / 180))
 
 typedef struct s_player
 {
@@ -54,12 +55,10 @@ typedef struct s_texture
 
 typedef struct s_map
 {
-    // int fd;
     int width;
     int height;
     mlx_image_t *img_map;
     char **arr_map;
-    // char        **map;
 }   t_map;
 typedef struct s_color
 {
@@ -106,14 +105,13 @@ typedef struct s_data
 
 
 void ft_player(t_data *data);
-void init_data(t_data   *data,t_map *map, t_player *player);
 void    draw_circle(t_data *data,int color);
 int ft_check_wall(t_data *data, float x,float y);
 void ft_update_env(void  *d);
 int ft_update_position_player(t_data *data);
 void rest_image(mlx_image_t *image);
 void draw_line(t_data *data, float x0, float y0, float x1, float y1, int color);
-void    ft_map(t_data *data);
+void    ft_map(t_data *data);//
 void    draw_rect(t_data *data,float size_x,float size_y , int color);
 void    ft_cast_all_rays(t_data *data,int color);
 
@@ -121,16 +119,15 @@ void    ft_cast_all_rays(t_data *data,int color);
 float ft_normalizeangle(float rayangle);
 t_ray ft_rays_horizontal(t_data *data, t_ray *ray,float ray_angle);
 t_ray ft_rays_vertical(t_data *data, t_ray *ray, float ray_angle);
-float  ft_intrecetion(t_data *data, float rayangle,int color);
 ///part test 
 void rays(t_data *data, float ray_angle,int color);////
 
-void    ft_projection3D(t_data *data,float d,int sig , t_ray *ray, double raydistance);
+void    ft_projection3D(t_data *data,float d,int sig , t_ray *ray, float raydistance);
 int ft_check_wall_intersection(t_data *data ,float x , float y);
 // void ft_rays_horizontal(t_data *data, float ray_angle);
 
 
-void    border_map(t_data *data);
+// void    border_map(t_data *data);
 
 // void draw_wall(t_data *data, int x, int y, int width, int height, double raydistance);
 
@@ -155,14 +152,14 @@ void    set_element(t_data *data, char *s, int *size, char c);
 void    get_element(t_data *data, char *s, int *size, int *i);
 int     get_color(t_element *element, char *color, char type);
 // void    setup_textures_colors(t_data *data);
-void    setup_colors(t_data *data);
+void    setup_colors(t_data *data); // 
 t_list  *get_map(t_data *data);
 
 //free_data.c
 void    free_array(char **array);
 void    print_error(char *str);
 void    free_data(t_data *data, int flag);
-void    free_structs(t_data *data);
+void    free_structs(t_data *data); // 
 
 //utils.c
 void    handle_space(char *s, int *i, int *j);

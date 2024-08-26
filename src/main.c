@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/08 18:21:32 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:59:14 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void    inite_data_player(t_data *data)
     data->player->radius = 5;
     data->player->turnDirection = 0;
     data->player->walkDirection = 0;
-    data->player->moveSpeed = 10;
+    data->player->moveSpeed = 3;
     data->player->rotationSpeed = 5* (M_PI / 180);
     if (data->player->isFacing== 'N')
         data->player->rotationAngle =  3 * M_PI / 2;
@@ -109,10 +109,8 @@ int		main(int ac, char **av)
     parsing(&data_mlx, av[1]);
     data_mlx.mlx = mlx_init(WINDOW_WHIDTH,WINDOW_HEIGHT,"cub3D",0);
     data_mlx.player->img_player = mlx_new_image(data_mlx.mlx,data_mlx.mlx->width,data_mlx.mlx->height);
-    // ft_map(&data_mlx);
     ft_player(&data_mlx);
     mlx_image_to_window(data_mlx.mlx,data_mlx.player->img_player,0,0);
-    // mlx_image_to_window(data_mlx.mlx,data_mlx.map->img_map,0,0);
     mlx_loop_hook(data_mlx.mlx,ft_update_env,&data_mlx);
     mlx_loop(data_mlx.mlx);
     return 0;

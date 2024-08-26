@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update.env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:36:50 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/07 10:56:49 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/08/26 14:53:41 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,9 @@ void ft_update_env(void  *d)
 {
     t_data *data = (t_data *)d;
     
-    if (mlx_is_key_down(data->mlx, MLX_KEY_UP)
-        || mlx_is_key_down(data->mlx, MLX_KEY_DOWN) 
-        || mlx_is_key_down(data->mlx, MLX_KEY_S)
-        || mlx_is_key_down(data->mlx, MLX_KEY_W))
+    if (mlx_is_key_down(data->mlx, MLX_KEY_UP)|| mlx_is_key_down(data->mlx, MLX_KEY_DOWN) || mlx_is_key_down(data->mlx, MLX_KEY_S)|| mlx_is_key_down(data->mlx, MLX_KEY_W))
         data->player->turnDirection = 0;
-    else if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) 
-        || mlx_is_key_down(data->mlx, MLX_KEY_LEFT)
-        || mlx_is_key_down(data->mlx, MLX_KEY_A) 
-        || mlx_is_key_down(data->mlx, MLX_KEY_D))
+    else if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) || mlx_is_key_down(data->mlx, MLX_KEY_LEFT)|| mlx_is_key_down(data->mlx, MLX_KEY_A) || mlx_is_key_down(data->mlx, MLX_KEY_D))
         data->player->walkDirection = 0;
     if (mlx_is_key_down(data->mlx, MLX_KEY_UP) == 1 || mlx_is_key_down(data->mlx, MLX_KEY_W))
     {

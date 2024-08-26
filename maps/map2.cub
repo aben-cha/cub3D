@@ -1,7 +1,7 @@
-NO ./textures/n.png
-SO ./textures/s.png
-  WE          ./textures/w.png           
-      EA        ./textures/e.png
+NO ./textures/img.png
+SO ./textures/img.png
+  WE          ./textures/img.png          
+      EA        ./textures/img.png
 
 F 0,51,25
 C 0,128,255

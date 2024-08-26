@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:28:39 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/07 12:51:12 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/08/26 14:57:26 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void    ft_cast_all_rays(t_data *data,int color)
         float d_v = pow(vertical.dx, 2) + pow(vertical.dy  , 2);;
         if (d_h <= d_v)
         {
-            // draw_line(data, SIZE_MINI_MAP*data->player->x,SIZE_MINI_MAP* data->player->y,SIZE_MINI_MAP*(data->player->x +horizontal.dx) ,SIZE_MINI_MAP*(data->player->y+horizontal.dy),color);
+           
             cdistance = sqrt(d_h) * cos(rayangle - data->player->rotationAngle);
             ft_projection3D(data,i,1, &horizontal, cdistance);
         }
@@ -94,8 +94,7 @@ t_ray ft_rays_horizontal(t_data *data, t_ray *ray,float ray_angle)
         xstep *= -1;
     float new_x =x_intercept;
     float new_y =y_intercept;
-    while(new_x >= 0 && new_x <= WINDOW_WHIDTH 
-		&& new_y >= 0 && new_y <= WINDOW_HEIGHT)
+    while(new_x >= 0 && new_x <= WINDOW_WHIDTH && new_y >= 0 && new_y <= WINDOW_HEIGHT)
     {
         if (ft_check_wall(data, new_x , new_y - (ray->ray_is_up ?1:0))==1)
             break;
@@ -131,8 +130,7 @@ t_ray    ft_rays_vertical(t_data *data,t_ray *ray,float ray_angle)
         ystep *= -1;
     float new_x =x_intercept;
     float new_y =y_intercept;
-    while (new_x >= 0 && new_x <= WINDOW_WHIDTH 
-		&& new_y >= 0 && new_y <= WINDOW_HEIGHT)
+    while (new_x >= 0 && new_x <= WINDOW_WHIDTH && new_y >= 0 && new_y <= WINDOW_HEIGHT)
     {
         if (ft_check_wall(data, new_x - (ray->ray_is_left ?1:0 ), new_y)==1)
             break;
