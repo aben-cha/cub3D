@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_png.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 20:32:59 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/12 18:46:42 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:01:16 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,13 @@ void    ft_load_imges_view(t_data *data, char *str1)
 }
 
 
-void load_images(t_data *data)
-{
-    data->animation->current_frame = 0;
-    data->animation->frame_delay = 14; // Adjust this value for speed
-    data->animation->delay_counter = 0;
-    ft_load_imges_wait(data,"png/wait/wait_");
-    ft_load_imges_shot(data,"png/shot/shot_");
-    ft_load_imges_load(data,"png/load/load_");
-    ft_load_imges_view(data,"png/view1/view_");
-}
+// void load_images(t_data *data)
+// {
+//     data->animation->current_frame = 0;
+//     data->animation->frame_delay = 14; // Adjust this value for speed
+//     data->animation->delay_counter = 0;
+//     ft_load_imges_wait(data,"png/wait/wait_");
+//     ft_load_imges_shot(data,"png/shot/shot_");
+//     ft_load_imges_load(data,"png/load/load_");
+//     ft_load_imges_view(data,"png/view1/view_");
+// }
