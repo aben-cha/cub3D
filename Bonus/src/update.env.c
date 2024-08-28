@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update.env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:36:50 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/14 13:47:46 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/28 16:52:30 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 void ft_update_env(void  *d)
 {
     t_data *data = (t_data *)d;
-    int32_t x, y;
-    mlx_get_mouse_pos(data->mlx, &x, &y);
+
+    mouse(d);
     if (mlx_is_key_down(data->mlx, MLX_KEY_UP)
         || mlx_is_key_down(data->mlx, MLX_KEY_DOWN) 
         || mlx_is_key_down(data->mlx, MLX_KEY_S)

@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:29:06 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/08/27 15:06:18 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/01 22:03:51 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -512,7 +512,7 @@ void mlx_close_window(mlx_t* mlx);
 
 /**
  * Initializes the rendering of MLX, this function won't return until
- * mlx_close_window is called, meaning it will loop until the user requests that 
+ * mlx_close_window is called, meaning it will loop until the user requests that
  * the window should close.
  * 
  * @param[in] mlx The MLX instance handle.

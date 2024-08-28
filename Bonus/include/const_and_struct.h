@@ -124,6 +124,7 @@ typedef struct s_data
     t_animation *animation;//
     t_player *player;
     t_ray   *ray;
+    int store_x;
 }   t_data;
 
 
