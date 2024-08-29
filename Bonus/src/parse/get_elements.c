@@ -21,12 +21,12 @@ int     set_color(t_color *color, char *color_path)
     i = -1;
     size = ft_strlen(color_path);
     if (color_path[0] == ',' || (size > 0 && color_path[size - 1] == ','))
-        print_error("Invalid number of color.");
+        return (1);
     while (color_path[++i])
     {
         if ((!ft_isdigit(color_path[i]) && color_path[i] != ',') ||
             (color_path[i] == ',' && color_path[i + 1] == ','))
-            print_error("Invalid number of color.");
+            return (1);
     }
     type = ft_split(color_path, ',');
     if (!type)
@@ -35,7 +35,7 @@ int     set_color(t_color *color, char *color_path)
     while (type && type[++i])
     {
         if (ft_atoi(type[i]) > 255 || i == 3)
-            print_error("Invalid number of color.");
+            return (1);
     }
     (color->red = ft_atoi(type[0]), color->green = ft_atoi(type[1]),
         color->blue = ft_atoi(type[2]));
@@ -50,9 +50,9 @@ void    set_element(t_data *data, char *s, int *size, char c)
     handle_space(s, &i, size);
     if (s[0] == '\n' || s[i] == '\n')
     {
-        ft_lstclear(&data->list);
         if (data->texturel)
             ft_lstclear(&data->texturel);
+        free_data(data, 0);
         print_error("Invalid Path.");
     }
     ft_lstadd_back(&data->texturel, ft_lstnew(ft_substr(s, i, *size - i + 1), c));
@@ -89,24 +89,21 @@ int     get_color(t_element *element, char *color, char type)
     return (0);
 }
 
-void    setup_textures_colors(t_data *data)
+void    setup_colors(t_data *data)
 {
+    t_list *head;
     if (!data->texturel)
-       (ft_lstclear(&data->list), print_error("Invalid elements"));
-    while (data->texturel)
+       (free_data(data, 0), print_error("Invalid elements"));
+    head = data->texturel;
+    while (head)
     {
-        if (data->texturel->c == 'N')
-            data->texture->north_texture = ft_strdup((char *)data->texturel->content);
-        else if (data->texturel->c == 'S')
-            data->texture->south_texture = ft_strdup((char *)data->texturel->content);
-        else if (data->texturel->c == 'E')
-            data->texture->east_texture = ft_strdup((char *)data->texturel->content);
-        else if (data->texturel->c == 'W')
-            data->texture->west_texture = ft_strdup((char *)data->texturel->content);
-        get_color(&data->element, data->texturel->content, data->texturel->c);
-        data->texturel = data->texturel->next;
+        if (get_color(&data->element, head->content, head->c))
+        {
+            free_data(data, 1);
+            print_error("Invalid number of color.");
+        }
+        head = head->next;
     }
-    ft_lstclear(&data->texturel);
 }
 
 t_list  *get_map(t_data *data)
@@ -130,6 +127,7 @@ t_list  *get_map(t_data *data)
         }
         data->list = data->list->next;
     }
-    setup_textures_colors(data);
+    // setup_textures_colors(data);
+    setup_colors(data);
 	return (ptr);
 }

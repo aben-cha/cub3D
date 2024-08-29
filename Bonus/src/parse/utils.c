@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 11:42:27 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/08/04 17:21:45 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/08/08 18:01:59 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,15 @@ int     is_adjacent(t_data *data, char **map, char space, char c)
         while (++x < data->map->width - 1)
         {
             if (!another_char(data->map->arr_map[y], "01NSEW "))
-                return (free_data(data, 1), print_error("another char exist"), 1);
+                return (free_array(data->map->arr_map), free_data(data, 1) , print_error("another char exist"), 1);
             if (map[y][x] == space)
             {
                 if (map[y][x + 1] == c || map[y][x - 1] == c 
-                || map[y + 1][x] == c || map[y + 1][x + 1] == c 
-                || map[y + 1][x - 1] == c|| map[y - 1][x] == c 
-                || map[y - 1][x + 1] == c || map[y - 1][x - 1] == c)
-                        return (free_data(data, 1), 1);
+                    || map[y - 1][x] == c || map[y + 1][x] == c)//or 3 lines next
+                // || map[y + 1][x] == c || map[y + 1][x + 1] == c) 
+                // || map[y + 1][x - 1] == c|| map[y - 1][x] == c 
+                // || map[y - 1][x + 1] == c || map[y - 1][x - 1] == c)
+                        return (free_array(data->map->arr_map), free_data(data, 1), 1);
             }
         }
     }
