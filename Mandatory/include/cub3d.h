@@ -19,7 +19,7 @@ t_ray ft_rays_vertical(t_data *data, t_ray *ray, float ray_angle);
 void	ft_rays_where_is_facing(t_ray *ray, float rayangle);
 void    ft_projection3D(t_data *data,float d,int sig , t_ray *ray, float raydistance);
 int ft_check_wall_intersection(t_data *data ,float x , float y);
-float	ft_value_of_var(t_data *data,t_ray *ray ,int sig);
+float	ft_value_of_var(t_data *data,t_ray *ray ,int si g);
 //first_parse.c
 void    inite_data_player(t_data *data);
 void    read_data(int *fd, char *av);

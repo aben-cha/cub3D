@@ -125,7 +125,16 @@ typedef struct s_data
     int store_x;
 }   t_data;
 
+typedef struct s_con_var
+{
+	uint8_t		*pixels;
+	uint32_t	i;
+	uint8_t		a;
+	uint8_t		b;
+	uint8_t		g;
+	uint8_t		r;
 
+} t_con_var;
 
 
 #endif

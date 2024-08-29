@@ -31,7 +31,9 @@ void data_init(t_data *data)
     data->map = malloc(sizeof(t_map));
     if (!data->map)
         (ft_lstclear(&data->list), exit (1));
-    
+    data->animation = malloc(sizeof(t_animation));
+    if (!data->animation)
+        (ft_lstclear(&data->list), free(data->map), exit(1));// free in the next
     data->map->height = 0;
     data->map->width = 0;
     data->i = 0;
