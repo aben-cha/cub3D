@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:19:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/11 13:11:08 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/29 01:35:06 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,33 @@ void rest_image(mlx_image_t *image)
         x++;
     }
 }
-int ft_check_wall_intersection(t_data *data ,float x , float y)
+int ft_check_wall_intersection(t_data *data, float px, float py)
 {
-    int x_map = floor(x/ TILE_SIZE);
-    int y_map = floor(y / TILE_SIZE);
-    if (x_map < 0 || x_map >=data->map->width || y_map < 0 || y_map >= data->map->height)
-        return 1;
-    printf("x  %d  y   %d  \n",x_map,y_map);
-    if (data->map->arr_map[y_map][x_map] == '1' && data->map->arr_map[y_map  + 1][x_map -1]=='1')
-        return 1;
-        // ||(data->map->arr_map[y_map][x_map] == '1' && data->map->arr_map[y_map  + 1][x_map + 1]=='1'))
-    return 0;
+    int r = data->player->radius + 150;
+    int x = -r;
+    int y = -r;
+    while (x < r)
+    {
+        y = -r;
+        while(y < r)
+        {
+            if (pow(x, 2) + pow(y, 2) < pow(r, 2))
+            {
+                int x_map = floor((px + x) / TILE_SIZE);
+                int y_map = floor((py + y) / TILE_SIZE);
+                if (x_map >= 0 && x_map < data->map->width && y_map >= 0 && y_map < data->map->height)
+                {
+                    if (data->map->arr_map[y_map][x_map] == '1')
+                        return (1);
+                }
+            }
+            y++;
+        }
+        x++;
+    }
+    return (0);
 }
+
 int ft_check_wall(t_data *data, float x,float y)
 {
     int x_map = floor(x / TILE_SIZE);
@@ -60,10 +75,11 @@ int ft_update_position_player(t_data *data)
     double new_x;
     double new_y;
     move_step = data->player->walkDirection * data->player->moveSpeed;
-    new_x = data->player->x + cos(data->player->rotationAngle) * move_step;
+    new_x = data->player->x+ cos(data->player->rotationAngle) * move_step;
     new_y = data->player->y + sin(data->player->rotationAngle) * move_step;
     
-    if (ft_check_wall(data, new_x,new_y) != 1)
+
+    if (ft_check_wall_intersection(data, new_x,new_y) != 1)
     {
         data->player->x = new_x;
         data->player->y = new_y;
@@ -71,12 +87,10 @@ int ft_update_position_player(t_data *data)
     return (0);
 }
 
-
-
 void view_player(t_data *data, int color)
 {
 
-    float centerX = TILE_MAP /2; 
+    float centerX = TILE_MAP /2;
     float centerY = TILE_MAP /2;
     float x1 = centerX + cos(data->player->rotationAngle) * 30;
     float y1 = centerY + sin(data->player->rotationAngle) * 30;

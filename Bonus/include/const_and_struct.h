@@ -17,10 +17,8 @@
 #define NUM_IMAGES_SHOT 14
 #define NUM_IMAGES_LOAD 37
 #define NUM_IMAGES_VIEW 67
-#define WIDTH_TEXTUER 1024
-#define HEIGHT_TEXTUER 1024
-#define TILE_SIZE 32//
-// #define TILE_SIZE_MAP 32// 32 tile size just fo map
+#define TILE_SIZE 1024//
+#define TILE_SIZE_MAP 32// 32 tile size just fo map
 #define TILE_MAP 250
 #define NBR_RAYS 1500
 #define WINDOW_WHIDTH 1500

@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:01:17 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/14 14:49:02 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/29 13:42:52 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,6 @@ void draw_rect(t_data *data, float size_x, float size_y, int color)
         x++;
     }
 }
-
-// void    ft_draw_map(t_data *data)
-void ft_map(t_data *data)
-{
-    int X = data->player->x - 100;
-    int Y = data->player->y - 100;
-    int x, y;
-    int color;
-
-
-    // y = Y;
-    // while (y < Y + 100 && y < data->map->height * TILE_SIZE)
-    // {
-    //     x = X;
-    //     while (x < X + 100 && x < data->map->width * TILE_SIZE)
-    //     {
-    //         if (data->map->arr_map[y / TILE_SIZE][x / TILE_SIZE] == 1)
-    //             color = 0x00BBACFF;
-    //         else
-    //             color = 0xCCBBACFF;
-    //         if (x < data->map->width &&  y < data->map->width && x >= 0 &&  y >= 0)
-    //             mlx_put_pixel(data->map->img_map, x, y, color);
-    //         x++;
-    //     }
-    //     y++;
-    // }
-    
-    ft_border_map(data);
-}
-
 void    ft_minimap(t_data *data)
 {
     int i;
@@ -67,10 +37,14 @@ void    ft_minimap(t_data *data)
     int sig = 0;
     int color = ft_color(data->element.floor_color.red, data->element.floor_color.green, 
     data->element.floor_color.blue, 100);
-    int x = data->player->x - TILE_MAP/2;
-    int y = data->player->y - TILE_MAP/2;
+    float scale_factor = (float)TILE_SIZE / TILE_SIZE_MAP;
+    int x1 = (int)(data->player->x / scale_factor);
+    int y1 = (int)(data->player->y / scale_factor);
+
+    int x = x1 - TILE_MAP / 2;
+    int y = y1 - TILE_MAP / 2;
     if (x <= 0 | y <= 0)
-        sig=1;
+        sig = 1;
     i = 0;
     j = 0;
     while (i < TILE_MAP)
@@ -78,20 +52,14 @@ void    ft_minimap(t_data *data)
         j = 0;
         while (j < TILE_MAP)
         {
-            int map_x = (i + x) / TILE_SIZE;
-            int map_y = (j + y) / TILE_SIZE;
+            int map_x = (i + x) / TILE_SIZE_MAP;
+            int map_y = (j + y) / TILE_SIZE_MAP;
            if (map_x >= 0 && map_x < data->map->width && map_y >= 0 && map_y < data->map->height)
             {
                 if (data->map->arr_map[map_y][map_x] == '1')
-                {
-                    // if (i < TILE_MAP && j < TILE_MAP && i>=0 && j>=0)
                         mlx_put_pixel(data->map->img_map,i,j,0x808080FF);
-                }
                 else
-                {
-                    // if (i < TILE_MAP && j < TILE_MAP && i>=0 && j>=0)
                         mlx_put_pixel(data->map->img_map,i,j,color);
-                }
                 
             }
             else if (sig ==1 ||map_x>= data->map->width||map_y>=data->map->height)
@@ -121,9 +89,9 @@ void    ft_border_map(t_data *data)
         {
             mx = TILE_MAP/2 + x; 
             my = TILE_MAP/2 + y;
-            if(pow(x,2)+pow(y,2) < pow(r,2) && pow(x,2)+pow(y,2) > pow(r2,2))
+            if(pow(x,2)+pow(y,2) < pow(r,2) && pow(x,2)+pow(y,2) >= pow(r2,2))
                 mlx_put_pixel(data->map->img_map,mx,my,0x000000FF);
-            if(pow(x,2)+pow(y,2) > pow(r,2))
+            if(pow(x,2)+pow(y,2) >= pow(r,2))
                 mlx_put_pixel(data->map->img_map,mx,my,0);
             y++;
         }

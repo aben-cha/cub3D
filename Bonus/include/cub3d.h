@@ -7,9 +7,9 @@ void load_images(t_data *data);
 void ft_wait_move_animation(void  *d);
 
 
-
-void ft_shoot_move_animation(t_data *data);
 void	mouse(void *param);
+void ft_shoot_move_animation(t_data *data);
+
 int    ft_color(int r, int g, int b, int a);
 void ft_player(t_data *data);
 void init_data(t_data   *data,t_map *map, t_player *player);
@@ -53,7 +53,7 @@ int     all_element_exist(t_data *data);
 
 //check_map.c
 int     map(t_list *ptr, t_data *data);
-int     set_map(t_list *ptr, t_data *data);
+void    set_map(t_list *ptr, t_data *data);
 int     position_of_player(t_data *data);
 int     is_valid_Map(t_data * data);
 
@@ -62,15 +62,14 @@ int     set_color(t_color *color, char *color_path);
 void    set_element(t_data *data, char *s, int *size, char c);
 void    get_element(t_data *data, char *s, int *size, int *i);
 int     get_color(t_element *element, char *color, char type);
-// void    setup_textures_colors(t_data *data);
-void    setup_colors(t_data *data);
+void    setup_textures_colors(t_data *data);
 t_list  *get_map(t_data *data);
 
 //free_data.c
 void    free_array(char **array);
 void    print_error(char *str);
 void    free_data(t_data *data, int flag);
-void    free_structs(t_data *data);
+
 
 //utils.c
 void    handle_space(char *s, int *i, int *j);

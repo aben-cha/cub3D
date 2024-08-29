@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 19:15:29 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/08/08 18:27:12 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/08/04 14:29:50 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ void    free_array(char **array)
     free(array);
 }
 
-void free_structs(t_data *data)
-{
-    free(data->map);
-    free(data->player);
-    free(data->texture);
-}
-
 void    print_error(char *str)
 {
     ft_putendl_fd("Error", 2);
@@ -41,8 +34,10 @@ void    print_error(char *str)
 
 void    free_data(t_data *data, int flag)
 {
-    if (flag)
-        ft_lstclear(&data->texturel);
-    ft_lstclear(&data->list);
-    free_structs(data);
+    if (flag == 1)
+        ft_lstclear(&data->list);
+    free(data->texture->north_texture);
+    free(data->texture->south_texture);
+    free(data->texture->east_texture);
+    free(data->texture->west_texture);
 }

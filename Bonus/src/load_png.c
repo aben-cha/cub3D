@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_png.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 20:32:59 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/29 10:23:18 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/08/14 15:04:27 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void    ft_load_imges_wait(t_data *data, char *str1)
     while (i < NUM_IMAGES_WAIT)
     {
         str = ft_png_name(str1, ".png", i + 1);
-        printf("%s\n",str);
         data->animation->textures_wait[i] = mlx_load_png(str);
         free(str);
         if (!data->animation->textures_wait[i])
