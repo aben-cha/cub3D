@@ -41,6 +41,7 @@ typedef struct s_player
     mlx_texture_t*walltexteur_s; //// 
     mlx_texture_t*walltexteur_w; //// 
     mlx_texture_t*walltexteur_e; //// 
+    mlx_texture_t*walltexteur_d; //// 
     float rotationSpeed;
 
 }   t_player;
@@ -99,6 +100,7 @@ typedef struct s_ray
     float  dy;
     float   x_intercept;
     float   y_intercept;
+    int     flag;
     bool    ray_is_up;
     bool    ray_is_down;
     bool    ray_is_left;
@@ -113,6 +115,8 @@ typedef struct s_data
     int		    size;
     int         fd;
     char        *string;
+    float       x_door;
+    float       y_door;
     t_texture   *texture;
     t_list      *texturel;
     t_list      *list;
@@ -125,16 +129,7 @@ typedef struct s_data
     int store_x;
 }   t_data;
 
-typedef struct s_con_var
-{
-	uint8_t		*pixels;
-	uint32_t	i;
-	uint8_t		a;
-	uint8_t		b;
-	uint8_t		g;
-	uint8_t		r;
 
-} t_con_var;
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:19:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/29 01:35:06 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:30:22 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,10 @@ int ft_check_wall(t_data *data, float x,float y)
     if (x_map < 0 || x_map >=data->map->width || y_map < 0 || y_map >= data->map->height)
         return 1;
     if (data->map->arr_map[y_map][x_map] == '1')
-        return 1;
-    return 0;
+        return (1);
+    else if (data->map->arr_map[y_map][x_map] == 'D')
+        return (2);
+    return (0);
     
 }
 

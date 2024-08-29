@@ -23,37 +23,25 @@ void    read_data(int *fd, char *av)
         print_error("Error opening file.");
 }
 
-void data_init(t_data *data)
-{
+void    fill_list(t_data *data, char *av)
+{    
+    read_data(&data->fd, av);
     data->list = NULL;
     data->texturel = NULL;
     data->string = NULL;
     data->map = malloc(sizeof(t_map));
-    if (!data->map)
-        (ft_lstclear(&data->list), exit (1));
-    data->animation = malloc(sizeof(t_animation));
-    if (!data->animation)
-        (ft_lstclear(&data->list), free(data->map), exit(1));// free in the next
     data->map->height = 0;
     data->map->width = 0;
     data->i = 0;
     data->j = 0;
     data->size = 0;
+    data->store_x = (WINDOW_WHIDTH / 2);
     data->player = malloc(sizeof(t_player));
-    if (!data->player)
-        (ft_lstclear(&data->list), free(data->map), exit(1));    
     data->texture = malloc(sizeof(t_texture));
-    if (!data->texture)
-        (ft_lstclear(&data->list), free(data->map), free(data->player), exit(1));    
+    data->animation= malloc(sizeof(t_animation));/// 
     data->player->x = 0.0;
-    data->player->y = 1.0;
+    data->player->y = 0.0;
     data->player->isFacing = '0';
-}
-
-void    fill_list(t_data *data, char *av)
-{    
-    read_data(&data->fd, av);
-    data_init(data);
     while (1)
     {
         data->string = get_next_line(data->fd);
@@ -63,28 +51,23 @@ void    fill_list(t_data *data, char *av)
         free(data->string);
     }
     if (!data->list)
-    {
-        close(data->fd);
-        ft_lstclear(&data->list);
-        free_structs(data);
-        print_error("Empty file.");
-    }
+        (close(data->fd), print_error("Empty file."));
     close(data->fd);
 }
 
 int     check_char(char *s)
 {
-    if (!ft_check_line("NSEWFC1\n ", s[0]))
-        return (1);
     if ((s[0] == 'F' || s[0] == 'C') && s[1] != ' ')
         return (1);
-    // else if ((s[0] == 'N' || s[1] == 'O') && s[2] != ' ')
-    //     return (1);
-    else if ((s[0] == 'N'  || s[0] == 'S') && (s[1] != 'O' || s[2] != ' '))
+    else if ((s[0] == 'N' || s[1] == 'O') && s[2] != ' ')
+        return (1);
+    else if ((s[0] == 'N'  || s[0] == 'S' || s[1] == 'O') && s[2] != ' ')
         return (1);
     else if ((s[0] == 'E' || s[1] == 'A') && s[2] != ' ')
         return (1);
     else if ((s[0] == 'W' || s[1] == 'E') && s[2] != ' ')
+        return (1);
+    if (!ft_check_line("NSEWFC1\n ", s[0]))
         return (1);
     return (0);
 }
@@ -103,27 +86,25 @@ int     element_exist(t_list *head, char *d)
         while (s && s[j] == ' ')
             j++;
         if (check_char(s + j))
-            return (0);
-            // return (ft_lstclear(&head), print_error("Invalid Element."), 0);
+            return (ft_lstclear(&head), print_error("Invalid Element."), 0);
         if (!ft_strncmp(&s[j], d, ft_strlen(d)))
                 len++;
         head = head->next;
     }
     if (len == 0 || len > 1)
-        return (0);
-        // return (ft_lstclear(&head), print_error("Invalid Element."), 0);
+        return (ft_lstclear(&head), print_error("Invalid Element."), 0);
     return (1);
 }
 
 int     all_element_exist(t_data *data)
 {
-	if (!element_exist(data->list, "NO") || !element_exist(data->list, "SO")
-        || !element_exist(data->list, "WE") || !element_exist(data->list, "EA")
-		|| !element_exist(data->list, "F") || !element_exist(data->list, "C"))
-        {
-            free_data(data, 0);
-			return (print_error("Invalid Element."), 0);
-        }
+	if (!element_exist(data->list, "NO")
+		|| !element_exist(data->list, "SO") 
+		|| !element_exist(data->list, "WE") 
+		|| !element_exist(data->list, "EA")
+		|| !element_exist(data->list, "F") 
+		|| !element_exist(data->list, "C"))
+			return (0);
 	return (1);
 }
 

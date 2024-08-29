@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:01:17 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/29 13:42:52 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:49:50 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void    ft_minimap(t_data *data)
             {
                 if (data->map->arr_map[map_y][map_x] == '1')
                         mlx_put_pixel(data->map->img_map,i,j,0x808080FF);
+                else if (data->map->arr_map[map_y][map_x] == 'D')
+                        mlx_put_pixel(data->map->img_map,i,j,0x808FA0FF);
                 else
                         mlx_put_pixel(data->map->img_map,i,j,color);
                 

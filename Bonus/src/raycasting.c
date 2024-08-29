@@ -6,22 +6,12 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:28:39 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/27 19:57:44 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:45:12 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../include/cub3d.h"
 
-
-void rays(t_data *data, float ray_angle,int color)
-{
-
-    float centerX = data->player->x;
-    float centerY = data->player->y;
-    float x1 = centerX + cos(ray_angle) * 90;
-    float y1 = centerY + sin(ray_angle) * 90;
-    draw_line(data, centerX,centerY, x1,y1, color);
-}
 void    ft_cast_all_rays(t_data *data,int color)
 {
     int i;
@@ -55,11 +45,15 @@ void    ft_cast_all_rays(t_data *data,int color)
         {
             cdistance = d_h * cos(rayangle - data->player->rotationAngle);
             ft_projection3D(data, i, 1, &horizontal, cdistance);
+            data->x_door = horizontal.x_intercept;
+            data->y_door = horizontal.y_intercept;
         }
         else
         {
             cdistance = d_v * cos(rayangle - data->player->rotationAngle);
             ft_projection3D(data,i,0,&vertical,cdistance);
+            data->x_door = vertical.x_intercept;
+            data->y_door = vertical.y_intercept;
         }
         rayangle += FOV_ANGLE / NBR_RAYS;
         i++;
@@ -78,7 +72,7 @@ t_ray ft_rays_horizontal(t_data *data, t_ray *ray,float ray_angle)
 {
     float xstep,ystep;
     float x_intercept,y_intercept;
-    
+    int flag;
     y_intercept = floor(data->player->y /TILE_SIZE) *TILE_SIZE;
     if (ray->ray_is_down == true)
         y_intercept += TILE_SIZE;
@@ -95,8 +89,16 @@ t_ray ft_rays_horizontal(t_data *data, t_ray *ray,float ray_angle)
     float new_y =y_intercept;
     while (1)
     {
-        if (ft_check_wall(data, new_x , new_y - (ray->ray_is_up ?1:0))==1)
+        if (ft_check_wall(data, new_x , new_y - (ray->ray_is_up ?1:0)) == 1)
+        {
+            flag = 0;
             break;
+        }
+        else if (ft_check_wall(data, new_x - (ray->ray_is_up ?1:0 ), new_y) == 2)
+        {
+            flag = 1;
+            break;
+        }
         else
         {
             new_x +=xstep;
@@ -107,14 +109,14 @@ t_ray ft_rays_horizontal(t_data *data, t_ray *ray,float ray_angle)
     float dy;
     dx = new_x - data->player->x;
     dy = new_y - data->player->y;
-    return (t_ray){dx,dy,new_x,new_y};
+    return (t_ray){dx,dy,new_x,new_y,flag};
 }
 
 t_ray    ft_rays_vertical(t_data *data,t_ray *ray,float ray_angle)
 {
     float xstep,ystep;
     float x_intercept,y_intercept;
-    
+    int flag;
     x_intercept = floor(data->player->x /TILE_SIZE) * TILE_SIZE;
     if (ray->ray_is_right == true)
         x_intercept += TILE_SIZE;
@@ -131,8 +133,16 @@ t_ray    ft_rays_vertical(t_data *data,t_ray *ray,float ray_angle)
     float new_y =y_intercept;
     while (1)
     {
-        if (ft_check_wall(data, new_x - (ray->ray_is_left ?1:0 ), new_y)==1)
+        if (ft_check_wall(data, new_x - (ray->ray_is_left ?1:0 ), new_y) == 1)
+        {
+            flag = 0;
             break;
+        }
+        else if (ft_check_wall(data, new_x - (ray->ray_is_left ?1:0 ), new_y) == 2)
+        {
+            flag = 1;
+            break;
+        }
         else
         {
             new_x +=xstep;
@@ -143,5 +153,5 @@ t_ray    ft_rays_vertical(t_data *data,t_ray *ray,float ray_angle)
     float dy;
     dx = new_x - data->player->x;
     dy = new_y - data->player->y;
-    return (t_ray){dx,dy,new_x,new_y};
+    return (t_ray){dx,dy,new_x,new_y,flag};
 }
