@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/28 16:51:04 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/08/29 11:52:54 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,11 @@ int		main(int ac, char **av)
     mlx_image_to_window(data_mlx.mlx,data_mlx.player->img_player,0,0);
     // mlx_image_to_window(data_mlx.mlx,data_mlx.map->img_map,40,600);
     //  ft_wait_move_animation(&data_mlx);
+    mlx_set_cursor_mode(data_mlx.mlx, MLX_MOUSE_DISABLED);
+	mlx_cursor_hook(data_mlx.mlx, (void *)mouse, &data_mlx);
     mlx_loop_hook(data_mlx.mlx, ft_wait_move_animation, &data_mlx);
     mlx_loop_hook(data_mlx.mlx,ft_update_env,&data_mlx);
+    
     mlx_loop(data_mlx.mlx);
     return 0;
 }
