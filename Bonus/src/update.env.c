@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:36:50 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/30 19:57:31 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/30 22:17:57 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,21 @@ void ft_update_env(void  *d)
     }
     if (mlx_is_key_down(data->mlx, MLX_KEY_O)== 1)
     {
-        if (data->map->arr_map[(int)((data->player->y  / TILE_SIZE)+1)][(int )((data->player->x / TILE_SIZE))] == 'D')
+        float x1 = data->player->x + cos(data->player->rotationAngle) * TILE_SIZE;
+        float y1 = data->player->y + sin(data->player->rotationAngle) * TILE_SIZE;
+        if (data->map->arr_map[(int)y1  / TILE_SIZE][(int)x1 / TILE_SIZE] == 'D')
         {
-            data->map->arr_map[(int)(data->player->y / TILE_SIZE)][(int )(data->player->x / TILE_SIZE)] = 'C';
+            data->map->arr_map[(int)(y1 / TILE_SIZE)][(int )(x1 / TILE_SIZE)] = 'C';
             ft_player(data);
         }
     }
     else if (mlx_is_key_down(data->mlx, MLX_KEY_C) == 1)
     {
-
-        if (data->map->arr_map[(int)(data->player->y  / TILE_SIZE)][(int )(data->player->x / TILE_SIZE)] == 'C')
+        float x1 = data->player->x + cos(data->player->rotationAngle) * TILE_SIZE;
+        float y1 = data->player->y + sin(data->player->rotationAngle) * TILE_SIZE;
+        if (data->map->arr_map[(int)(y1 / TILE_SIZE)][(int )(x1 / TILE_SIZE)] == 'C')
         {
-            data->map->arr_map[(int)(data->player->y / TILE_SIZE)][(int )(data->player->x / TILE_SIZE)] = 'D';
+            data->map->arr_map[(int)(y1 / TILE_SIZE)][(int )(x1 / TILE_SIZE)] = 'D';
             ft_player(data);
         }
     }

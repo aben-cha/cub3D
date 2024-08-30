@@ -9,7 +9,7 @@ void ft_wait_move_animation(void  *d);
 
 void	mouse(void *param);
 void ft_shoot_move_animation(t_data *data);
-
+void	ft_rays_where_is_facing(t_ray *ray, float rayangle);
 int    ft_color(int r, int g, int b, int a);
 void ft_player(t_data *data);
 void init_data(t_data   *data,t_map *map, t_player *player);

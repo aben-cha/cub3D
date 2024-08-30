@@ -6,11 +6,24 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:28:39 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/29 19:13:56 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/30 21:44:39 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../include/cub3d.h"
+
+void	ft_rays_where_is_facing(t_ray *ray, float rayangle)
+{
+    if (ray == NULL)
+    {
+        fprintf(stderr, "Error: ray is NULL\n");
+        exit(1);
+    }
+	ray->ray_is_down = rayangle > 0 && rayangle < M_PI;
+	ray->ray_is_up = !ray->ray_is_down;
+	ray->ray_is_right = rayangle < 0.5 * M_PI || rayangle > 1.5 * M_PI;
+	ray->ray_is_left = !ray->ray_is_right;
+}
 
 void    ft_cast_all_rays(t_data *data,int color)
 {
@@ -21,24 +34,15 @@ void    ft_cast_all_rays(t_data *data,int color)
     while (i < NBR_RAYS)
     {
         t_ray *ray;
+        ray = malloc(sizeof(t_ray)); // freeeeeeeeee
         rayangle = ft_normalizeangle(rayangle);
-        ray->ray_is_down = rayangle > 0 && rayangle < M_PI;
-        ray->ray_is_up = !ray->ray_is_down;
-        ray->ray_is_right = rayangle < 0.5 * M_PI || rayangle > 1.5 * M_PI;
-        ray->ray_is_left = !ray->ray_is_right;
-
+        ft_rays_where_is_facing(ray,rayangle);
         t_ray horizontal;
         t_ray vertical;
         horizontal = ft_rays_horizontal(data ,ray,rayangle);
         vertical = ft_rays_vertical(data ,ray,rayangle);
-        horizontal.ray_is_down = rayangle > 0 && rayangle < M_PI;
-        horizontal.ray_is_up = !horizontal.ray_is_down;
-        horizontal.ray_is_right = rayangle < 0.5 * M_PI || rayangle > 1.5 * M_PI;
-        horizontal.ray_is_left = !horizontal.ray_is_right;
-        vertical.ray_is_down = rayangle > 0 && rayangle < M_PI;
-        horizontal.ray_is_up = !vertical.ray_is_down;
-        vertical.ray_is_right = rayangle < 0.5 * M_PI || rayangle > 1.5 * M_PI;
-        vertical.ray_is_left = !vertical.ray_is_right;
+        ft_rays_where_is_facing(&horizontal,rayangle);
+        ft_rays_where_is_facing(&vertical,rayangle);
         float d_h = sqrtf(pow(horizontal.dx, 2) + pow(horizontal.dy , 2));
         float d_v = sqrtf(pow(vertical.dx, 2) + pow(vertical.dy, 2));
         if (d_h <= d_v)
