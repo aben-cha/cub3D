@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:28:39 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/29 16:45:12 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/29 19:13:56 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,11 @@ void    ft_cast_all_rays(t_data *data,int color)
         {
             cdistance = d_h * cos(rayangle - data->player->rotationAngle);
             ft_projection3D(data, i, 1, &horizontal, cdistance);
-            data->x_door = horizontal.x_intercept;
-            data->y_door = horizontal.y_intercept;
         }
         else
         {
             cdistance = d_v * cos(rayangle - data->player->rotationAngle);
             ft_projection3D(data,i,0,&vertical,cdistance);
-            data->x_door = vertical.x_intercept;
-            data->y_door = vertical.y_intercept;
         }
         rayangle += FOV_ANGLE / NBR_RAYS;
         i++;
@@ -94,7 +90,7 @@ t_ray ft_rays_horizontal(t_data *data, t_ray *ray,float ray_angle)
             flag = 0;
             break;
         }
-        else if (ft_check_wall(data, new_x - (ray->ray_is_up ?1:0 ), new_y) == 2)
+        else if (ft_check_wall(data, new_x , new_y - (ray->ray_is_up ?1:0)) == 2)
         {
             flag = 1;
             break;

@@ -1,7 +1,7 @@
-NO ./img.png
-SO ./n.png
-  WE          ./w.png          
-      EA        ./door.png
+NO ./w.png
+SO ./e.png
+  WE          ./s.png          
+      EA        ./n.png
 F 0,51,25
 C 0,128,255
 

@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/29 15:45:22 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/30 19:54:25 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void    inite_data_player(t_data *data)
     data->player->walltexteur_e = mlx_load_png(data->texture->east_texture);
     convert_abgr_to_rgba(data->player->walltexteur_e);
 
-    data->player->walltexteur_d = mlx_load_png("./dd.png");
+    data->player->walltexteur_d = mlx_load_png("./door.png");
     convert_abgr_to_rgba(data->player->walltexteur_d);
     if (!data->player->walltexteur_n || !data->player->walltexteur_w || !data->player->walltexteur_s || !data->player->walltexteur_e)
     {
@@ -58,8 +58,9 @@ void    inite_data_player(t_data *data)
     }
     data->player->radius = 5;
     data->player->turnDirection = 0;
-    data->player->walkDirection = 0;
+    data->player->walkDirection = 1;
     data->player->moveSpeed = 80;
+    data->player->view_player = 0;
     data->player->rotationSpeed = 20* (M_PI / 180);
     if (data->player->isFacing== 'N')
         data->player->rotationAngle =  3 * M_PI / 2;

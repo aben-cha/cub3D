@@ -115,8 +115,6 @@ typedef struct s_data
     int		    size;
     int         fd;
     char        *string;
-    float       x_door;
-    float       y_door;
     t_texture   *texture;
     t_list      *texturel;
     t_list      *list;

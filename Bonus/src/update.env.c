@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:36:50 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/29 16:52:12 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/30 19:57:31 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ void ft_update_env(void  *d)
 {
     t_data *data = (t_data *)d;
     mouse(d);
+    data->player->walkDirection = 1;
     if ( mlx_is_key_down(data->mlx, MLX_KEY_S)
-        || mlx_is_key_down(data->mlx, MLX_KEY_W))
+        || mlx_is_key_down(data->mlx, MLX_KEY_W)
+        ||mlx_is_key_down(data->mlx, MLX_KEY_D)
+        || mlx_is_key_down(data->mlx, MLX_KEY_A))
         data->player->turnDirection = 0;
     else if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) 
         || mlx_is_key_down(data->mlx, MLX_KEY_LEFT)
@@ -37,14 +40,26 @@ void ft_update_env(void  *d)
         data->player->walkDirection = -1;
         ft_update_position_player(data);
         ft_player(data);
-    }    
+    }
+    else if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+    {
+        data->player->view_player = 1;
+        ft_update_position_player(data);
+        ft_player(data);
+    }
+    else if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+    {   
+        data->player->view_player = 2;
+        ft_update_position_player(data);
+        ft_player(data);
+    }  
     if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT) == 1)
     {
         data->player->turnDirection = -1;
         ft_update_position_player(data);
         ft_player(data);
     }
-    else if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) == 1 )
+    else if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) == 1)
     {
         data->player->turnDirection = 1;
         ft_update_position_player(data);
@@ -52,28 +67,20 @@ void ft_update_env(void  *d)
     }
     if (mlx_is_key_down(data->mlx, MLX_KEY_O)== 1)
     {
-        //D-->C;
-
-        printf("player position : (%f, %f)\n", data->player->x/ TILE_SIZE , data->player->y / TILE_SIZE);
-        printf("position door  D: (%f, %f)\n", data->x_door/ TILE_SIZE , data->y_door/ TILE_SIZE );
-        if (data->map->arr_map[(int)(data->player->y  / TILE_SIZE)][(int )(data->player->x / TILE_SIZE)] == 'D')
+        if (data->map->arr_map[(int)((data->player->y  / TILE_SIZE)+1)][(int )((data->player->x / TILE_SIZE))] == 'D')
         {
             data->map->arr_map[(int)(data->player->y / TILE_SIZE)][(int )(data->player->x / TILE_SIZE)] = 'C';
             ft_player(data);
         }
-        //ft_player(data);
     }
-    else if (mlx_is_key_down(data->mlx, MLX_KEY_C)== 1)
+    else if (mlx_is_key_down(data->mlx, MLX_KEY_C) == 1)
     {
-        //D-->C;
 
         if (data->map->arr_map[(int)(data->player->y  / TILE_SIZE)][(int )(data->player->x / TILE_SIZE)] == 'C')
         {
             data->map->arr_map[(int)(data->player->y / TILE_SIZE)][(int )(data->player->x / TILE_SIZE)] = 'D';
-            printf("%c\n",data->map->arr_map[(int)(data->player->y / TILE_SIZE)][(int )(data->player->x / TILE_SIZE)]);
             ft_player(data);
         }
-        //ft_player(data);
     }
     else if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE) == 1)
        mlx_close_window(data->mlx);
