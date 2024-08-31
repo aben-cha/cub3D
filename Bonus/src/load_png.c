@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 20:32:59 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/31 14:54:20 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/08/31 16:32:50 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void load_images(t_data *data)
     data->animation->delay_counter_wait = 0;
     data->animation->current_frame= 0;
     data->animation->frame_delay = 3; 
+    data->animation->frame_delay_load = 6; 
     data->animation->delay_counter= 3;
     ft_load_imges_wait(data,"png/wait/wait_");
     ft_load_imges_shot(data,"png/shot/shot_");

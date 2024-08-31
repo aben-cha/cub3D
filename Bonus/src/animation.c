@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 16:55:30 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/31 14:50:13 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/08/31 16:54:26 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void ft_load_move_animation(void *d)
         }
 
         mlx_image_to_window(data->mlx, anim->image, 200, 184);
-
+        usleep(90000);
         anim->current_frame = (anim->current_frame + 1) % NUM_IMAGES_LOAD;
         anim->delay_counter = 0;
     }

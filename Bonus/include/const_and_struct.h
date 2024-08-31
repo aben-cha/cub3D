@@ -55,6 +55,8 @@ typedef struct s_animaction
     int current_frame;
     int frame_delay;
     int delay_counter;
+    int frame_delay_load;
+    int delay_counter_load;
     mlx_texture_t *textures_wait[NUM_IMAGES_WAIT];
     mlx_texture_t *textures_shot[NUM_IMAGES_SHOT];
     mlx_texture_t *textures_load[NUM_IMAGES_LOAD];
@@ -126,6 +128,7 @@ typedef struct s_data
     t_ray   *ray;
     int store_x;
     int counter;
+    int key_hand;
 }   t_data;
 
 
