@@ -131,6 +131,11 @@ typedef struct s_data
     int key_hand;
 }   t_data;
 
+typedef struct s_position
+{
+    float   x;
+    float   y;
+}   t_pos;
 
 
 

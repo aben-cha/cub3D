@@ -18,10 +18,9 @@ int ft_check_wall(t_data *data, float x,float y);
 void ft_update_env(void  *d);
 int ft_update_position_player(t_data *data);
 void rest_image(mlx_image_t *image);
-void draw_line(t_data *data, float x0, float y0, float x1, float y1, int color);
+void	draw_line(t_data *data, t_pos *p1, t_pos *p2, int color);
 void    ft_map(t_data *data);
-void    draw_rect(t_data *data,float size_x,float size_y , int color);
-void    ft_cast_all_rays(t_data *data,int color);
+void    ft_cast_all_rays(t_data *data);
 
 void    ft_minimap(t_data *data);
 float ft_normalizeangle(float rayangle);
