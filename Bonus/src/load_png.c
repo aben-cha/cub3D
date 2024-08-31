@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_png.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 20:32:59 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/29 16:55:06 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/31 14:54:20 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,30 +82,6 @@ void    ft_load_imges_load(t_data *data, char *str1)
 
     
 }
-void    ft_load_imges_view(t_data *data, char *str1)
-{
-    char *str;
-    int i = 0;
-
-    while (i < NUM_IMAGES_VIEW)
-    {
-        str = ft_png_name(str1, ".png", i + 1);
-        data->animation->textures_view[i] = mlx_load_png(str);
-        free(str);
-        i++;
-    }
-    i = 0;
-    while (i < NUM_IMAGES_VIEW)
-    {
-        if (!data->animation->textures_view[i])
-        {
-            fprintf(stderr, "Failed to load image view %d\n", i + 1);
-            exit(EXIT_FAILURE);
-        }
-        i++;
-    }
-    
-}
 
 
 void load_images(t_data *data)
@@ -114,7 +90,7 @@ void load_images(t_data *data)
     data->animation->frame_delay_wait = 9; // Adjust this value for speed
     data->animation->delay_counter_wait = 0;
     data->animation->current_frame= 0;
-    data->animation->frame_delay = 10; 
+    data->animation->frame_delay = 3; 
     data->animation->delay_counter= 3;
     ft_load_imges_wait(data,"png/wait/wait_");
     ft_load_imges_shot(data,"png/shot/shot_");

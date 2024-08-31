@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/31 13:24:06 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/31 15:04:07 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	mouse(void *param)
 int		main(int ac, char **av)
 {
     t_data  data_mlx;
+    data_mlx.counter = 0;
     parsing(&data_mlx, av[1]);
     data_mlx.mlx = mlx_init(WINDOW_WHIDTH,WINDOW_HEIGHT,"cub3D",1);
     data_mlx.player->img_player = mlx_new_image(data_mlx.mlx,data_mlx.mlx->width,data_mlx.mlx->height);
@@ -103,9 +104,9 @@ int		main(int ac, char **av)
     ft_player(&data_mlx);
     mlx_image_to_window(data_mlx.mlx,data_mlx.player->img_player,0,0);
     mlx_image_to_window(data_mlx.mlx,data_mlx.map->img_map,40,600);
-    mlx_set_cursor_mode(data_mlx.mlx, MLX_MOUSE_DISABLED);
-    mlx_loop_hook(data_mlx.mlx, ft_wait_move_animation, &data_mlx);
+    // mlx_loop_hook(data_mlx.mlx, ft_wait_move_animation, &data_mlx);
     mlx_loop_hook(data_mlx.mlx,ft_update_env,&data_mlx);
+    mlx_set_cursor_mode(data_mlx.mlx, MLX_MOUSE_DISABLED);
     mlx_loop(data_mlx.mlx);
     return 0;
 }

@@ -29,6 +29,7 @@ void    fill_list(t_data *data, char *av)
     data->list = NULL;
     data->texturel = NULL;
     data->string = NULL;
+    data->counter = 0;
     data->map = malloc(sizeof(t_map));
     data->map->height = 0;
     data->map->width = 0;

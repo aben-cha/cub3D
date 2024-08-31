@@ -125,6 +125,7 @@ typedef struct s_data
     t_player *player;
     t_ray   *ray;
     int store_x;
+    int counter;
 }   t_data;
 
 

@@ -3,21 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   update.env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:36:50 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/31 13:06:12 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/31 15:02:57 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+void loading_sprites(void *d)
+{
+    static int i;
+    t_data *data = (t_data *)d;
+    
+    if (data->counter == 0)
+        ft_wait_move_animation(data);
+    if (i == 5)
+    {
+        // printf("loading %d,    %d\n", data->animation->current_frame, i);
+        ft_load_move_animation(data);
+        if (data->animation->current_frame == 36)
+        {
+            i = 0;
+            data->counter = 0;
+            data->animation->current_frame = 0;
+        }
+        // printf("last loading : %d\n", i);
+    }
+    if (data->counter != 0)
+    {
+        // printf("shooting %d\n", data->animation->current_frame);
+        ft_shoot_move_animation(data);
+        if (data->animation->current_frame == 13)
+        {
+            printf("shooting\n");
+            data->animation->current_frame = 0;
+            i += data->counter;
+            data->counter = 0;
+            printf("i  %d\n", i);
+        }
+    }
+}
 
 void ft_update_env(void  *d)
 {
     t_data *data = (t_data *)d;
     mouse(d);
-    data->player->walkDirection = 1;
+    loading_sprites(d);
+    // data->player->walkDirection = 1;
     if ( mlx_is_key_down(data->mlx, MLX_KEY_S)
         || mlx_is_key_down(data->mlx, MLX_KEY_W)
         ||mlx_is_key_down(data->mlx, MLX_KEY_D)
@@ -50,6 +84,14 @@ void ft_update_env(void  *d)
     else if (mlx_is_key_down(data->mlx, MLX_KEY_A))
     {   
         data->player->view_player = 2;
+        ft_update_position_player(data);
+        ft_player(data);
+    }
+    if (mlx_is_key_down(data->mlx, MLX_KEY_L)== 1)
+    {
+        data->counter++;
+        data->player->walkDirection = 0;
+        data->player->turnDirection = 0;
         ft_update_position_player(data);
         ft_player(data);
     }  

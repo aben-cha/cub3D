@@ -3,12 +3,12 @@
 
 #include "const_and_struct.h"
 
+void	mouse(void *param);
 void load_images(t_data *data);
 void ft_wait_move_animation(void  *d);
+void ft_load_move_animation(void *d);
+void ft_shoot_move_animation(void *d);
 
-
-void	mouse(void *param);
-void ft_shoot_move_animation(t_data *data);
 void	ft_rays_where_is_facing(t_ray *ray, float rayangle);
 int    ft_color(int r, int g, int b, int a);
 void ft_player(t_data *data);
