@@ -20,7 +20,7 @@ int     map(t_list *ptr, t_data *data)
     int min_width;
 
     if (check_wall(ptr->content, '1'))
-        return (free_data(data, 1), 0);
+        return (free_data(data, 1), ft_lstclear(&ptr), 0);
     if (ptr->next)
         ptr = ptr->next;
     min_width = ft_strlen((char *)ptr->content);
@@ -32,12 +32,12 @@ int     map(t_list *ptr, t_data *data)
             data->map->width = ft_strlen((char *)ptr->content);
         handle_space(s, &i, &len_s);
         if (s[i] != '1' || (len_s > 0 && s[len_s] != '1'))
-            return (free_data(data, 1), 0);
+            return (free_data(data, 1), ft_lstclear(&ptr), 0);
         data->map->height++;
         ptr = ptr->next;
     }
     if (check_wall(ptr->content, '1') || !ft_strncmp((char *)ptr->content, "\n", 1))
-        return (free_data(data, 1), 0);
+        return (free_data(data, 1), ft_lstclear(&ptr), 0);
     return (data->map->height += 2, 1);
 }
 
@@ -103,16 +103,18 @@ int     position_of_player(t_data *data)
 int     is_valid_Map(t_data * data)
 {
 	t_list *head;
-    
+
     if (!all_element_exist(data))
 		return (1);
 	head = get_map(data);
 	if (!head)
         return (free_data(data, 1), print_error("Map doesn't exist."), 1);
-    if (!map(head, data))
+    // printf("adress of head : %p\n", head);
+    // printf("adress of head : %p\n", data.);
+    if (head && !map(head, data))
         return (print_error("The map should closed by walls."), 1);
-    if (!head || set_map(head, data))
-        return (print_error("Invalid Map."), 1);    
+    if (head && set_map(head, data))
+        return (print_error("Malloc Failed."), 1);    
     if (is_adjacent(data, data->map->arr_map, 32, '0'))
         return (print_error("Player out."), 1);
     if (position_of_player(data))

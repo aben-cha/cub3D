@@ -72,17 +72,17 @@ void    fill_list(t_data *data, char *av)
 
 int     check_char(char *s)
 {
-    if (!ft_check_line("NSEWFC1\n ", s[0]))
-        return (1);
     if ((s[0] == 'F' || s[0] == 'C') && s[1] != ' ')
         return (1);
-    // else if ((s[0] == 'N' || s[1] == 'O') && s[2] != ' ')
-    //     return (1);
-    else if ((s[0] == 'N'  || s[0] == 'S') && (s[1] != 'O' || s[2] != ' '))
+    else if ((s[0] == 'N' || s[1] == 'O') && s[2] != ' ')
+        return (1);
+    else if ((s[0] == 'N'  || s[0] == 'S' || s[1] == 'O') && s[2] != ' ')
         return (1);
     else if ((s[0] == 'E' || s[1] == 'A') && s[2] != ' ')
         return (1);
     else if ((s[0] == 'W' || s[1] == 'E') && s[2] != ' ')
+        return (1);
+    if (!ft_check_line("NSEWFC1\n ", s[0]))
         return (1);
     return (0);
 }

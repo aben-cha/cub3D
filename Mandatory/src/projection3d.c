@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:57:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/26 15:48:10 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/08/26 18:58:35 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void    ft_projection3D(t_data *data,float x,int sig , t_ray *ray, float raydist
     float d_projectplan;
     float wallheight;
     float new_distance;
-
     d_projectplan = ((float)data->mlx->width / 2.0) / tan(FOV_ANGLE /2.0);
     wallheight = ((float)TILE_SIZE / raydistance) * d_projectplan;
     uint32_t texcolor;
