@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/01 12:31:44 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/01 14:29:36 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,11 @@ int		main(int ac, char **av)
 {
     t_data  data_mlx;
     parsing(&data_mlx, av[1]);
-    // data_mlx.mlx = mlx_init(WINDOW_WHIDTH,WINDOW_HEIGHT,"cub3D",1);
-    // data_mlx.player->img_player = mlx_new_image(data_mlx.mlx,data_mlx.mlx->width,data_mlx.mlx->height);
-    // ft_player(&data_mlx);
-    // mlx_image_to_window(data_mlx.mlx,data_mlx.player->img_player,0,0);
-    // mlx_loop_hook(data_mlx.mlx,ft_update_env,&data_mlx);
-    // mlx_loop(data_mlx.mlx);
+    data_mlx.mlx = mlx_init(WINDOW_WHIDTH,WINDOW_HEIGHT,"cub3D",1);
+    data_mlx.player->img_player = mlx_new_image(data_mlx.mlx,data_mlx.mlx->width,data_mlx.mlx->height);
+    ft_player(&data_mlx);
+    mlx_image_to_window(data_mlx.mlx,data_mlx.player->img_player,0,0);
+    mlx_loop_hook(data_mlx.mlx,ft_update_env,&data_mlx);
+    mlx_loop(data_mlx.mlx);
     return 0;
 }

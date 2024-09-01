@@ -121,7 +121,6 @@ typedef struct s_data
     t_player *player;
     t_ray   *ray;
 }   t_data;
-
 typedef struct s_con_var
 {
 	uint8_t		*pixels;

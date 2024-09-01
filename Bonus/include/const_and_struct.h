@@ -37,11 +37,6 @@ typedef struct s_player
     float   rotationAngle;
     float   moveSpeed;
     mlx_image_t *img_player;
-    mlx_texture_t*walltexteur_n; //// 
-    mlx_texture_t*walltexteur_s; //// 
-    mlx_texture_t*walltexteur_w; //// 
-    mlx_texture_t*walltexteur_e; //// 
-    mlx_texture_t*walltexteur_d; //// 
     float rotationSpeed;
 
 }   t_player;
@@ -66,21 +61,20 @@ typedef struct s_animaction
 
 typedef struct s_texture
 {
-    char *north_texture;
-    char *south_texture;
-    char *east_texture;
-    char *west_texture;
+    mlx_texture_t   *walltexteur_n; //// 
+    mlx_texture_t   *walltexteur_s; //// 
+    mlx_texture_t   *walltexteur_w; //// 
+    mlx_texture_t   *walltexteur_e; //// 
+    mlx_texture_t   *walltexteur_d; //// 
 }           t_texture;
 
 
 typedef struct s_map
 {
-    // int fd;
     int width;
     int height;
     mlx_image_t *img_map;
     char **arr_map;
-    // char        **map;
 }   t_map;
 typedef struct s_color
 {
@@ -137,6 +131,15 @@ typedef struct s_position
     float   y;
 }   t_pos;
 
+typedef struct s_con_var
+{
+	uint8_t		*pixels;
+	uint32_t	i;
+	uint8_t		a;
+	uint8_t		b;
+	uint8_t		g;
+	uint8_t		r;
 
+} t_con_var;
 
 #endif

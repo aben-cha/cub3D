@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_player.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:19:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/31 14:32:47 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/01 13:29:24 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int ft_update_position_player(t_data *data)
     angle = data->player->rotationAngle;
     if (data->player->view_player ==1)
     {
-        angle -=3*M_PI/2;
+        angle -=3*M_PI/2;   
     }
     else if (data->player->view_player ==2)
     {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projection3d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:57:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/31 13:29:46 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/01 14:14:22 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,16 @@ void    ft_projection3D(t_data *data,float x,int sig , t_ray *ray, float raydist
             {
                 if (ray->flag== 1)//door
                 {
-                    int offset_y =((y - top_pixel) * data->player->walltexteur_d->width) / wallheight; // door
-                    uint32_t texcolor = get_pixel_color(data->player->walltexteur_d, offset_x, offset_y);   ///door
+                    int offset_y =((y - top_pixel) * data->texture->walltexteur_d->width) / wallheight; // door
+                    uint32_t texcolor = get_pixel_color(data->texture->walltexteur_d, offset_x, offset_y);   ///door
                     if (x >= 0 && x < data->mlx->width)
                         mlx_put_pixel(data->player->img_player, x,y, texcolor);
                     
                 }
                 else
                 {
-                    int offset_y =((y - top_pixel) * data->player->walltexteur_n->width) / wallheight;
-                    uint32_t texcolor = get_pixel_color(data->player->walltexteur_n, offset_x, offset_y);   
+                    int offset_y =((y - top_pixel) * data->texture->walltexteur_n->width) / wallheight;
+                    uint32_t texcolor = get_pixel_color(data->texture->walltexteur_n, offset_x, offset_y);   
                     if (x >= 0 && x < data->mlx->width) 
                         mlx_put_pixel(data->player->img_player, x,y, texcolor);
                     
@@ -103,15 +103,15 @@ void    ft_projection3D(t_data *data,float x,int sig , t_ray *ray, float raydist
             {
                 if (ray->flag== 1)//door
                 {
-                    int offset_y =((y - top_pixel) * data->player->walltexteur_d->width) / wallheight; //door
-                    uint32_t texcolor = get_pixel_color(data->player->walltexteur_d, offset_x, offset_y); //door
+                    int offset_y =((y - top_pixel) * data->texture->walltexteur_d->width) / wallheight; //door
+                    uint32_t texcolor = get_pixel_color(data->texture->walltexteur_d, offset_x, offset_y); //door
                     if (x >= 0 && x < data->mlx->width) 
                         mlx_put_pixel(data->player->img_player, x,y, texcolor);
                 }
                 else
                 {
-                    int offset_y =((y - top_pixel) * data->player->walltexteur_s->width) / wallheight;
-                    uint32_t texcolor = get_pixel_color(data->player->walltexteur_s, offset_x, offset_y);
+                    int offset_y =((y - top_pixel) * data->texture->walltexteur_s->width) / wallheight;
+                    uint32_t texcolor = get_pixel_color(data->texture->walltexteur_s, offset_x, offset_y);
                     if (x >= 0 && x < data->mlx->width) 
                         mlx_put_pixel(data->player->img_player, x,y, texcolor);
                 }
@@ -120,16 +120,16 @@ void    ft_projection3D(t_data *data,float x,int sig , t_ray *ray, float raydist
             {
                 if (ray->flag == 1)
                 {
-                    int offset_y =((y - top_pixel) * data->player->walltexteur_d->width) / wallheight;
-                    uint32_t texcolor = get_pixel_color(data->player->walltexteur_d, offset_x, offset_y);
+                    int offset_y =((y - top_pixel) * data->texture->walltexteur_d->width) / wallheight;
+                    uint32_t texcolor = get_pixel_color(data->texture->walltexteur_d, offset_x, offset_y);
                     if (x >= 0 && x < data->mlx->width) 
                         mlx_put_pixel(data->player->img_player, x,y, texcolor);
                     
                 }
                 else
                 {
-                    int offset_y =((y - top_pixel) * data->player->walltexteur_e->width) / wallheight;
-                    uint32_t texcolor = get_pixel_color(data->player->walltexteur_e, offset_x, offset_y);
+                    int offset_y =((y - top_pixel) * data->texture->walltexteur_e->width) / wallheight;
+                    uint32_t texcolor = get_pixel_color(data->texture->walltexteur_e, offset_x, offset_y);
                     if (x >= 0 && x < data->mlx->width) 
                         mlx_put_pixel(data->player->img_player, x,y, texcolor);
                     
@@ -139,15 +139,15 @@ void    ft_projection3D(t_data *data,float x,int sig , t_ray *ray, float raydist
             {
                 if (ray->flag ==1)
                 {
-                    int offset_y =((y - top_pixel) * data->player->walltexteur_d->width) / wallheight;
-                    uint32_t texcolor = get_pixel_color(data->player->walltexteur_d, offset_x, offset_y);   
+                    int offset_y =((y - top_pixel) * data->texture->walltexteur_d->width) / wallheight;
+                    uint32_t texcolor = get_pixel_color(data->texture->walltexteur_d, offset_x, offset_y);   
                     if (x >= 0 && x < data->mlx->width) 
                         mlx_put_pixel(data->player->img_player, x,y, texcolor);
                 }
                 else
                 {
-                    int offset_y =((y - top_pixel) * data->player->walltexteur_e->width) / wallheight;
-                    uint32_t texcolor = get_pixel_color(data->player->walltexteur_e, offset_x, offset_y);   
+                    int offset_y =((y - top_pixel) * data->texture->walltexteur_e->width) / wallheight;
+                    uint32_t texcolor = get_pixel_color(data->texture->walltexteur_e, offset_x, offset_y);   
                     if (x >= 0 && x < data->mlx->width) 
                         mlx_put_pixel(data->player->img_player, x,y, texcolor);
                 }

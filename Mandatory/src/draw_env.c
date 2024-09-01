@@ -3,44 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   draw_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:14:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/27 14:48:42 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/01 14:05:41 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void    draw_circle(t_data *data,int color)
+void	draw_circle(t_data *data,int color)
 {
-    int x;
-    int y;
-    float px;
-    float py;
-    int r;
+	int		x;
+	int		y;
+	float	px;
+	float	py;
+	int		r;
 
-    r = data->player->radius;
-    x = -r;
-    while (x < r)
-    {
-        y = -r;
-        while (y < r)
-        {
-            if (pow(x, 2) + pow(y, 2) < pow(r, 2))
-            {
-                px = TILE_MAP/2 + x; 
-                py = TILE_MAP/2 + y;
-                if (px < TILE_MAP && py < TILE_MAP && px>=0 && py>=0)
-                    mlx_put_pixel(data->map->img_map,px,py,color);
-            }
-
-            y++;
-        }
-        x++;
-    }
-    
-    
+	r = data->player->radius;
+	x = -r;
+	while (x < r)
+	{
+		y = -r;
+		while (y < r)
+		{
+			if (pow(x, 2) + pow(y, 2) < pow(r, 2))
+			{
+				px = TILE_MAP / 2 + x; 
+				py = TILE_MAP / 2 + y;
+				if (px < TILE_MAP && py < TILE_MAP && px >= 0 && py >= 0)
+					mlx_put_pixel(data->map->img_map,px,py,color);
+			}
+			y++;
+		}
+		x++;
+	}
 }
 
 void draw_line(t_data *data, float x0, float y0, float x1, float y1, int color)
