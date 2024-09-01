@@ -43,7 +43,7 @@ void	ft_cast_all_rays(t_data	*data, int color)
 	t_ray	vertical;
 
 	i =	0;
-	rayangle = data->player->rotationAngle - (FOV_ANGLE / 2);
+	rayangle = data->player->rotAngle - (FOV_ANGLE / 2);
 	while (i < NBR_RAYS)
 	{
 		ray = malloc(sizeof(t_ray));
@@ -56,9 +56,9 @@ void	ft_cast_all_rays(t_data	*data, int color)
 		float d_h = sqrtf(pow(horizontal.dx, 2) + pow(horizontal.dy, 2));
 		float d_v = sqrtf(pow(vertical.dx, 2) + pow(vertical.dy, 2));
 		if (d_h <= d_v)
-			ft_projection3D(data, i, 1, &horizontal, (d_h * cos(rayangle - data->player->rotationAngle)));
+			ft_projection3D(data, i, 1, &horizontal, (d_h * cos(rayangle - data->player->rotAngle)));
 		else
-			ft_projection3D(data, i, 0, &vertical, (d_v * cos(rayangle - data->player->rotationAngle)));
+			ft_projection3D(data, i, 0, &vertical, (d_v * cos(rayangle - data->player->rotAngle)));
 		rayangle += FOV_ANGLE / NBR_RAYS;
 		i++;
 	}

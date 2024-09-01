@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:36:50 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/31 14:33:36 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/01 15:58:17 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void ft_update_env(void  *d)
         || mlx_is_key_down(data->mlx, MLX_KEY_W)
         ||mlx_is_key_down(data->mlx, MLX_KEY_D)
         || mlx_is_key_down(data->mlx, MLX_KEY_A))
-        data->player->turnDirection = 0;
+        data->player->turnDir = 0;
     else if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) 
         || mlx_is_key_down(data->mlx, MLX_KEY_LEFT)
         || mlx_is_key_down(data->mlx, MLX_KEY_A) 
@@ -54,13 +54,13 @@ void ft_update_env(void  *d)
     }  
     if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT) == 1)
     {
-        data->player->turnDirection = -1;
+        data->player->turnDir = -1;
         ft_update_position_player(data);
         ft_player(data);
     }
     else if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) == 1)
     {
-        data->player->turnDirection = 1;
+        data->player->turnDir = 1;
         ft_update_position_player(data);
         ft_player(data);
     }

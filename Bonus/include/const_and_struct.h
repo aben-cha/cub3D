@@ -32,12 +32,12 @@ typedef struct s_player
     int  radius;
     char isFacing;
     double  view_player;
-    int     turnDirection;
+    int     turnDir;
     int     walkDirection;
-    float   rotationAngle;
+    float   rotAngle;
     float   moveSpeed;
     mlx_image_t *img_player;
-    float rotationSpeed;
+    float rotSpeed;
 
 }   t_player;
 
@@ -110,6 +110,10 @@ typedef struct s_data
     int 	    i;
     int		    size;
     int         fd;
+    float       rayangle;
+    int         flagdoor;
+    int         n;
+    float   distance;
     char        *string;
     t_texture   *texture;
     t_list      *texturel;

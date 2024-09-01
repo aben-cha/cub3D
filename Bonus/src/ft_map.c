@@ -6,11 +6,30 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:01:17 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/01 00:09:26 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/01 15:28:19 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void	rest_image(mlx_image_t *image)
+{
+	uint32_t	x;
+	uint32_t	y;
+
+	x = 0;
+	y = 0;
+	while (x < image->width)
+	{
+		y = 0;
+		while (y < image->height)
+		{
+			mlx_put_pixel(image, x, y, 0);
+			y++;
+		}
+		x++;
+	}
+}
 
 void	set_color_pixel(t_data *data, t_pos *map, t_pos *p1, int sig)
 {

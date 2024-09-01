@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/01 14:29:36 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/01 15:58:28 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,23 +75,23 @@ void    inite_data_player(t_data *data)
 {
     load_images(data);
 	data->player->radius = 5;
-	data->player->turnDirection = 0;
+	data->player->turnDir = 0;
 	data->player->walkDirection = 0;
 	data->player->moveSpeed = 60;
-	data->player->rotationSpeed = 5 * (M_PI / 180);
+	data->player->rotSpeed = 5 * (M_PI / 180);
 	if (data->player->isFacing == '0')
 	{
 		(free_array(data->map->arr_map), free_data(data, 1));
 		print_error("Player is not found.");
 	}
 	if (data->player->isFacing == 'N')
-		data->player->rotationAngle = 3 * M_PI / 2;
+		data->player->rotAngle = 3 * M_PI / 2;
 	else if (data->player->isFacing == 'E')
-		data->player->rotationAngle = 0;
+		data->player->rotAngle = 0;
 	else if (data->player->isFacing == 'S')
-		data->player->rotationAngle = M_PI / 2;
+		data->player->rotAngle = M_PI / 2;
 	else if (data->player->isFacing == 'W')
-		data->player->rotationAngle = M_PI;
+		data->player->rotAngle = M_PI;
 }
 
 void parsing(t_data *data, char *av)

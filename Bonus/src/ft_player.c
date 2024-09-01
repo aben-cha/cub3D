@@ -6,30 +6,11 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:19:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/01 00:08:50 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/01 16:06:33 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-void	rest_image(mlx_image_t *image)
-{
-	uint32_t	x;
-	uint32_t	y;
-
-	x = 0;
-	y = 0;
-	while (x < image->width)
-	{
-		y = 0;
-		while (y < image->height)
-		{
-			mlx_put_pixel(image, x, y, 0);
-			y++;
-		}
-		x++;
-	}
-}
 
 int	ft_check_arr(t_data *data, t_pos *p1, t_pos *point)
 {
@@ -97,8 +78,8 @@ int	ft_update_position_player(t_data *data)
 	float	new_x;
 	float	new_y;
 
-	data->player->rotationAngle += (data->player->turnDirection * data->player->rotationSpeed);
-	angle = data->player->rotationAngle;
+	data->player->rotAngle += (data->player->turnDir * data->player->rotSpeed);
+	angle = data->player->rotAngle;
 	if (data->player->view_player == 1)
 		angle -= 3 * M_PI / 2;
 	else if (data->player->view_player == 2)
@@ -113,22 +94,6 @@ int	ft_update_position_player(t_data *data)
 		data->player->y = new_y;
 	}
 	return (0);
-}
-
-void	view_player(t_data *data, int color)
-{
-	float		x1;
-	float		y1;
-	t_pos		center;
-	t_pos		last_point;
-
-	center.x = TILE_MAP / 2;
-	center.y = TILE_MAP / 2;
-	x1 = center.x + cos(data->player->rotationAngle) * 30;
-	y1 = center.y + sin(data->player->rotationAngle) * 30;
-	last_point.x = x1;
-	last_point.y = y1;
-	draw_line(data, &center, &last_point, color);
 }
 
 void	ft_player(t_data *data)

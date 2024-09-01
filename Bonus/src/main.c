@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/01 15:43:55 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/01 18:47:12 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,25 +77,24 @@ void    inite_data_player(t_data *data)
 {
     load_images1(data);
 	data->player->radius = 5;
-    data->player->turnDirection = 0;
+    data->player->turnDir = 0;
     data->player->walkDirection = 1;
     data->player->moveSpeed = 100;
     data->player->view_player = 0;
-    data->player->rotationSpeed = 20* (M_PI / 180);
-    printf("player.is = %c\n",data->player->isFacing);
+    data->player->rotSpeed = 20* (M_PI / 180);
 	if (data->player->isFacing == '0')
 	{
 		(free_array(data->map->arr_map), free_data(data, 1));
 		print_error("Player is not found.");
 	}
     if (data->player->isFacing== 'N')
-        data->player->rotationAngle =  3 * M_PI / 2;
+        data->player->rotAngle =  3 * M_PI / 2;
     else if (data->player->isFacing== 'E')
-        data->player->rotationAngle =  0;
+        data->player->rotAngle =  0;
     else if (data->player->isFacing== 'S')
-        data->player->rotationAngle = M_PI / 2;
+        data->player->rotAngle = M_PI / 2;
     else if (data->player->isFacing== 'W')
-        data->player->rotationAngle =  M_PI;
+        data->player->rotAngle =  M_PI;
 }
 
 
@@ -114,7 +113,7 @@ void	mouse(void *param)
 	t_data	*data = (t_data *)param;
     
 	mlx_get_mouse_pos(data->mlx, &x, &y);
-	data->player->rotationAngle += (float)(x -  (data->store_x)) / (WINDOW_HEIGHT / 2);
+	data->player->rotAngle += (float)(x -  (data->store_x)) / (WINDOW_HEIGHT / 2);
 	mlx_set_mouse_pos(data->mlx, data->store_x, (WINDOW_HEIGHT / 2));
     ft_player(data);
 }
@@ -135,7 +134,7 @@ int		main(int ac, char **av)
     mlx_image_to_window(data_mlx.mlx,data_mlx.player->img_player,0,0);
     mlx_image_to_window(data_mlx.mlx,data_mlx.map->img_map,40,600);
     mlx_loop_hook(data_mlx.mlx,ft_update_env,&data_mlx);
-    // mlx_set_cursor_mode(data_mlx.mlx, MLX_MOUSE_DISABLED);
+    mlx_set_cursor_mode(data_mlx.mlx, MLX_MOUSE_DISABLED);
     mlx_loop(data_mlx.mlx);
     return 0;
 }

@@ -7,7 +7,7 @@ LDFLAGS = -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib" -L. -lmlx42 -fr
 RM = rm -f
 OBJ_DIR = obj
 SRC_DIR = src
-SRC = $(SRC_DIR)/main.c $(SRC_DIR)/ft_player.c $(SRC_DIR)/draw_env.c $(SRC_DIR)/update.env.c $(SRC_DIR)/ft_map.c $(SRC_DIR)/raycasting.c $(SRC_DIR)/projection3d.c  \
+SRC = $(SRC_DIR)/main.c $(SRC_DIR)/ft_player.c $(SRC_DIR)/draw_env.c $(SRC_DIR)/update.env.c $(SRC_DIR)/ft_map.c $(SRC_DIR)/raycasting.c $(SRC_DIR)/projection3d.c $(SRC_DIR)/utils_raycasting.c  $(SRC_DIR)/utils_projection3d.c $(SRC_DIR)/utils1_projection3d.c \
 	  $(SRC_DIR)/animation.c $(SRC_DIR)/load_png.c \
       $(SRC_DIR)/parse/first_parse.c $(SRC_DIR)/parse/check_map.c $(SRC_DIR)/parse/get_elements.c $(SRC_DIR)/parse/free_data.c $(SRC_DIR)/parse/utils.c \
       $(SRC_DIR)/get_next_line/get_next_line.c $(SRC_DIR)/get_next_line/get_next_line_utils.c $(SRC_DIR)/parse/linked_list.c

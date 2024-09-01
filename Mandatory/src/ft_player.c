@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_player.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:19:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/01 13:29:24 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/01 15:58:28 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ int ft_check_wall(t_data *data, float x,float y)
 
 int ft_update_position_player(t_data *data)
 {
-    data->player->rotationAngle += (data->player->turnDirection * data->player->rotationSpeed);
+    data->player->rotAngle += (data->player->turnDir * data->player->rotSpeed);
     int move_step;
     float angle;
     float new_x;
     float new_y;
-    angle = data->player->rotationAngle;
+    angle = data->player->rotAngle;
     if (data->player->view_player ==1)
     {
         angle -=3*M_PI/2;   

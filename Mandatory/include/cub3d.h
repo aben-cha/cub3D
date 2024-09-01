@@ -32,13 +32,13 @@ typedef struct s_player
     int  radius;
     char isFacing;
     int  view_player;
-    int     turnDirection;
+    int     turnDir;
     int     walkDirection;
-    float   rotationAngle;
+    float   rotAngle;
     float   moveSpeed;
     mlx_image_t *img_player;
     // uint32_t *walltexteur;
-    float rotationSpeed;
+    float rotSpeed;
 
 }   t_player;
 
