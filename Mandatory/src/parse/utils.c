@@ -6,44 +6,42 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 11:42:27 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/08/08 18:01:59 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/01 10:49:18 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void    handle_space(char *s, int *i, int *j)
+void	handle_space(char *s, int *i, int *j)
 {
-    *i = 0;
-    *j = ft_strlen(s) - 1;
-    if (*j && s[*j] == '\n')
-        (*j)--; 
-    while (s[*i] && s[*i] == ' ')
-        (*i)++;
-    while (*j && s[*j] && (s[*j] == ' '))
-        (*j)--; 
+	*i = 0;
+	*j = ft_strlen(s) - 1;
+	if (*j && s[*j] == '\n')
+		(*j)--;
+	while (s[*i] && s[*i] == ' ')
+		(*i)++;
+	while (*j && s[*j] && (s[*j] == ' '))
+		(*j)--;
 }
 
-int     check_wall(char *s, char c)
+int	check_wall(char *s, char c)
 {
-    while (s && *s)
-    {
-        while (*s && *s == ' ')
-            s++;
-        if (*s && *s != '\n' && *s != c)
-            return (1);
-        if (*s)
-            s++;
-    }
-    return (0);
+	while (s && *s)
+	{
+		while (*s && *s == ' ')
+			s++;
+		if (*s && *s != '\n' && *s != c)
+			return (1);
+		if (*s)
+			s++;
+	}
+	return (0);
 }
 
-int     another_char(char *s, char *ptr)
+int	another_char(char *s, char *ptr)
 {
-	int		i;
-	// char	*ptr;
+	int	i;
 
-	// ptr = "01NSEW ";
 	i = 0;
 	if (!s)
 		return (0);
@@ -56,29 +54,28 @@ int     another_char(char *s, char *ptr)
 	return (1);
 }
 
-int     is_adjacent(t_data *data, char **map, char space, char c)
+int	is_adjacent(t_data *data, char **map, char space, char c)
 {
-    int y;
-    int x;
+	int	y;
+	int	x;
 
-    y = 0;
-    while (++y < data->map->height - 1)
-    {
-        x = 0;
-        while (++x < data->map->width - 1)
-        {
-            if (!another_char(data->map->arr_map[y], "01NSEW "))
-                return (free_array(data->map->arr_map), free_data(data, 1) , print_error("another char exist"), 1);
-            if (map[y][x] == space)
-            {
-                if (map[y][x + 1] == c || map[y][x - 1] == c 
-                    || map[y - 1][x] == c || map[y + 1][x] == c)//or 3 lines next
-                // || map[y + 1][x] == c || map[y + 1][x + 1] == c) 
-                // || map[y + 1][x - 1] == c|| map[y - 1][x] == c 
-                // || map[y - 1][x + 1] == c || map[y - 1][x - 1] == c)
-                        return (free_array(data->map->arr_map), free_data(data, 1), 1);
-            }
-        }
-    }
-    return (0);
+	y = 0;
+	while (++y < data->map->height - 1)
+	{
+		x = 0;
+		while (++x < data->map->width - 1)
+		{
+			if (!another_char(data->map->arr_map[y], "01NSEW "))
+				return (free_array(data->map->arr_map), free_data(data, 1),
+					print_error("another char exist"), 1);
+			if (map[y][x] == space)
+			{
+				if (map[y][x + 1] == c || map[y][x - 1] == c
+					|| map[y - 1][x] == c || map[y + 1][x] == c)
+					return (free_array(data->map->arr_map),
+						free_data(data, 1), 1);
+			}
+		}
+	}
+	return (0);
 }

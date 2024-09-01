@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 16:59:24 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/08/04 14:28:23 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/01 10:30:52 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lstnew(void *content, char c)
 	ptr = (t_list *)malloc(sizeof(t_list));
 	if (!ptr)
 		return (NULL);
-	ptr->content=content;
+	ptr->content = content;
 	ptr->c = c;
 	ptr -> next = NULL;
 	return (ptr);

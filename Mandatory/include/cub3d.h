@@ -122,7 +122,16 @@ typedef struct s_data
     t_ray   *ray;
 }   t_data;
 
+typedef struct s_con_var
+{
+	uint8_t		*pixels;
+	uint32_t	i;
+	uint8_t		a;
+	uint8_t		b;
+	uint8_t		g;
+	uint8_t		r;
 
+} t_con_var;
 
 void load_images_texteurs(t_data *data);
 void load_images(t_data *data);
@@ -175,12 +184,12 @@ int     all_element_exist(t_data *data);
 
 //check_map.c
 int     map(t_list *ptr, t_data *data);
-int     set_map(t_list *ptr, t_data *data);
+int     set_map(t_list *ptr, t_data *data, int end);
 int     position_of_player(t_data *data);
-int     is_valid_Map(t_data * data);
+int     is_valid_map(t_data * data);
 
 //get-element.c
-int     set_color(t_color *color, char *color_path);
+int     set_color(t_color *color, char *color_path, int i);
 void    set_element(t_data *data, char *s, int *size, char c);
 void    get_element(t_data *data, char *s, int *size, int *i);
 int     get_color(t_element *element, char *color, char type);
