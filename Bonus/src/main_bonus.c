@@ -6,11 +6,11 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/01 18:47:12 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:06:24 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 void	convert_abgr_to_rgba(t_data *data, mlx_texture_t *texture)
 {
 	t_con_var	vars;

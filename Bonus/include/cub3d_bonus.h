@@ -1,7 +1,7 @@
-#ifndef CUB3D_H
-#define CUB3D_H
+#ifndef CUB3D_BONUS_H
+#define CUB3D_BONUS_H
 
-#include "const_and_struct.h"
+#include "const_and_struct_bonus.h"
 
 void	mouse(void *param);
 void load_images(t_data *data);
@@ -25,8 +25,8 @@ void    ft_cast_all_rays(t_data *data);
 void    ft_minimap(t_data *data);
 float ft_normalizeangle(float rayangle);
 void	ft_which_ray_used(t_data *data, t_ray *ver, t_ray *hor, int i);
-int	ft_find_wall_vertical(t_data *data, t_pos *new, t_pos *step, t_ray *ray);
-int	ft_find_wall_horizontal(t_data *data, t_pos *new, t_pos *step, t_ray *ray);
+int     ft_find_wall_vertical(t_data *data, t_pos *new, t_pos *step, t_ray *ray);
+int     ft_find_wall_horizontal(t_data *data, t_pos *new, t_pos *step, t_ray *ray);
 t_ray	ft_rays_horizontal(t_data *data, t_ray *ray, float rangle);
 t_ray	ft_rays_vertical(t_data *data, t_ray *ray, float rangle);
 

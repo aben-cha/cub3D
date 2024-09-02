@@ -6,11 +6,11 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 15:11:04 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/01 19:26:46 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:06:24 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 void	ft_rays_where_is_facing(t_ray *ray, float rayangle)
 {

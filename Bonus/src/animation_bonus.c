@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 16:55:30 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/08/31 16:54:26 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:06:24 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 void ft_wait_move_animation(void  *d)
 {

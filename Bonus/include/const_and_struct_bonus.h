@@ -1,5 +1,5 @@
-#ifndef CONST_AND_STRUCT_H
-#define CONST_AND_STRUCT_H
+#ifndef CONST_AND_STRUCT_BONUS_H
+#define CONST_AND_STRUCT_BONUS_H
 
 
 #include <stdio.h>
