@@ -13,36 +13,15 @@
 #include"../include/cub3d.h"
 
 
-void rays(t_data *data, float ray_angle, int color)
+void	ft_cast_all_rays(t_data *data)
 {
-	float	centerX;
-	float	centerY;
-	float	x1;
-	float	y1;
-	centerX	= data->player->x;
-	centerY	= data->player->y;
-	x1 = centerX + cos(ray_angle) * 90;
-	y1 = centerY + sin(ray_angle) * 90;
-	draw_line(data, centerX, centerY, x1, y1, color);
-}
-
-void	ft_rays_where_is_facing(t_ray *ray, float rayangle)
-{
-	ray->ray_is_down = rayangle > 0 && rayangle < M_PI;
-	ray->ray_is_up = !ray->ray_is_down;
-	ray->ray_is_right = rayangle < 0.5 * M_PI || rayangle > 1.5 * M_PI;
-	ray->ray_is_left = !ray->ray_is_right;
-}
-
-void	ft_cast_all_rays(t_data	*data, int color)
-{
-	int		i;
-	float	rayangle;
 	t_ray	*ray;
 	t_ray	horizontal;
 	t_ray	vertical;
+	int		i;
+	float	rayangle;
 
-	i =	0;
+	i = 0;
 	rayangle = data->player->rotAngle - (FOV_ANGLE / 2);
 	while (i < NBR_RAYS)
 	{
@@ -53,12 +32,8 @@ void	ft_cast_all_rays(t_data	*data, int color)
 		vertical = ft_rays_vertical(data, ray, rayangle);
 		ft_rays_where_is_facing(&horizontal, rayangle);
 		ft_rays_where_is_facing(&vertical, rayangle);
-		float d_h = sqrtf(pow(horizontal.dx, 2) + pow(horizontal.dy, 2));
-		float d_v = sqrtf(pow(vertical.dx, 2) + pow(vertical.dy, 2));
-		if (d_h <= d_v)
-			ft_projection3D(data, i, 1, &horizontal, (d_h * cos(rayangle - data->player->rotAngle)));
-		else
-			ft_projection3D(data, i, 0, &vertical, (d_v * cos(rayangle - data->player->rotAngle)));
+		data->rayangle = rayangle;
+		ft_which_ray_used(data, &vertical, &horizontal, i);
 		rayangle += FOV_ANGLE / NBR_RAYS;
 		i++;
 	}
@@ -72,74 +47,56 @@ float	ft_normalizeangle(float rayangle)
 	return (rayangle);
 }
 
-t_ray	ft_rays_horizontal(t_data *data, t_ray *ray, float ray_angle)
+t_ray	ft_rays_horizontal(t_data *data, t_ray *ray, float rangle)
 {
-	float	xstep,ystep;
-	float	x_intercept,y_intercept;
-	
-	y_intercept	= floor(data->player->y	/TILE_SIZE)	*TILE_SIZE;
+	t_pos	step;
+	t_pos	hitwall;
+	t_pos	new;
+	t_pos	d;
+
+	hitwall.y = floor(data->player->y / TILE_SIZE) * TILE_SIZE;
 	if (ray->ray_is_down == true)
-		y_intercept	+= TILE_SIZE;
-	x_intercept	= data->player->x + (y_intercept - data->player->y) / tan(ray_angle);
-	ystep = TILE_SIZE;
+		hitwall.y += TILE_SIZE;
+	hitwall.x = data->player->x + (hitwall.y - data->player->y) / tan(rangle);
+	step.y = TILE_SIZE;
 	if (ray->ray_is_up == true)
-		ystep *= -1;
-	xstep = TILE_SIZE / tan(ray_angle);
-	if (ray->ray_is_left == true && xstep > 0)
-		xstep *= -1;
-	if (ray->ray_is_right == true && xstep < 0)
-		xstep *= -1;
-	float new_x	= x_intercept;
-	float new_y	= y_intercept;
-	while (1)
-	{
-		if (ft_check_wall(data, new_x, new_y - (ray->ray_is_up ? 1 : 0)) == 1)
-			break ;
-		else
-		{
-			new_x += xstep;
-			new_y += ystep;
-		}
-	}
-	float dx;
-	float dy;
-	dx = new_x - data->player->x;
-	dy = new_y - data->player->y;
-	return (t_ray){dx, dy, new_x, new_y};
+		step.y *= -1;
+	step.x = TILE_SIZE / tan(rangle);
+	if (ray->ray_is_left == true && step.x > 0)
+		step.x *= -1;
+	if (ray->ray_is_right == true && step.x < 0)
+		step.x *= -1;
+	new.x = hitwall.x;
+	new.y = hitwall.y;
+	ft_find_wall_hor(data, &new, &step, ray);
+	d.x = new.x - data->player->x;
+	d.y = new.y - data->player->y;
+	return ((t_ray){d.x, d.y, new.x, new.y});
 }
 
-t_ray	 ft_rays_vertical(t_data *data, t_ray *ray, float ray_angle)
+t_ray	ft_rays_vertical(t_data *data, t_ray *ray, float rangle)
 {
-	float xstep,ystep;
-	float x_intercept,y_intercept;
-	
-	x_intercept = floor(data->player->x / TILE_SIZE) * TILE_SIZE;
+	t_pos	step;
+	t_pos	hitwall;
+	t_pos	new;
+	t_pos	d;
+
+	hitwall.x = floor(data->player->x / TILE_SIZE) * TILE_SIZE;
 	if (ray->ray_is_right == true)
-		x_intercept += TILE_SIZE;
-	y_intercept = data->player->y + (x_intercept - data->player->x) * tan(ray_angle);
-	xstep = TILE_SIZE;
+		hitwall.x += TILE_SIZE;
+	hitwall.y = data->player->y + (hitwall.x - data->player->x) * tan(rangle);
+	step.x = TILE_SIZE;
 	if (ray->ray_is_left == true)
-		xstep *= -1;
-	ystep = TILE_SIZE * tan(ray_angle);
-	if (ray->ray_is_up == true && ystep > 0)
-		ystep *= -1;
-	if (ray->ray_is_down == true && ystep < 0)
-		ystep *= -1;
-	float new_x = x_intercept;
-	float new_y	= y_intercept;
-	while (1)
-	{
-		if (ft_check_wall(data,new_x -	(ray->ray_is_left ?1:0 ), new_y)==1)
-			break;
-		else
-		{
-			new_x +=xstep;
-			new_y +=ystep;
-		}
-	}
-	float dx;
-	float dy;
-	dx = new_x - data->player->x;
-	dy = new_y - data->player->y;
-	return (t_ray){dx,dy,new_x,new_y};
+		step.x *= -1;
+	step.y = TILE_SIZE * tan(rangle);
+	if (ray->ray_is_up == true && step.y > 0)
+		step.y *= -1;
+	if (ray->ray_is_down == true && step.y < 0)
+		step.y *= -1;
+	new.x = hitwall.x;
+	new.y = hitwall.y;
+	ft_find_wall_ver(data, &new, &step, ray);
+	d.x = new.x - data->player->x;
+	d.y = new.y - data->player->y;
+	return ((t_ray){d.x, d.y, new.x, new.y});
 }

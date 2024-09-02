@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:19:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/01 16:06:33 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/02 15:55:48 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ int	ft_update_position_player(t_data *data)
 	data->player->rotAngle += (data->player->turnDir * data->player->rotSpeed);
 	angle = data->player->rotAngle;
 	if (data->player->view_player == 1)
-		angle -= 3 * M_PI / 2;
+		angle += M_PI / 2;
 	else if (data->player->view_player == 2)
-		angle += 3 * M_PI / 2;
+		angle -= M_PI / 2;
 	data->player->view_player = 0;
 	move_step = data->player->walkDirection * data->player->moveSpeed;
 	new_x = data->player->x + cos(angle) * move_step;
