@@ -19,6 +19,7 @@
 #define WINDOW_WHIDTH 1500 ///
 #define WINDOW_HEIGHT 900 ///
 #define FOV_ANGLE (60 * (M_PI / 180))
+#define TILE_MAP 250
 
 /// ////
 typedef struct s_player
@@ -32,6 +33,9 @@ typedef struct s_player
     int     walkDirection;
     float   rotAngle;
     float   moveSpeed;
+    int turnDirection;
+    float rotationAngle;
+    float rotationSpeed;
     mlx_image_t *img_player;
     // uint32_t *walltexteur;
     float rotSpeed;

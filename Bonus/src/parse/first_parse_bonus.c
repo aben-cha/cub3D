@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_parse.c                                      :+:      :+:    :+:   */
+/*   first_parse_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 19:14:51 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/08/02 19:14:51 by aben-cha         ###   ########.fr       */
+/*   Created: 2024/09/02 18:06:08 by aben-cha          #+#    #+#             */
+/*   Updated: 2024/09/02 18:06:08 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,6 @@ void	read_data(int *fd, char *av)
 	*fd = open(av, O_RDONLY);
 	if (*fd == -1)
 		print_error("Error opening file.");
-}
-
-void	data_init(t_data *data)
-{
-	data->list = NULL;
-	data->texturel = NULL;
-	data->string = NULL;
-	data->animation = malloc(sizeof(t_animation));
-	if (!data->animation)
-		exit(1);
-	data->map = malloc(sizeof(t_map));
-	if (!data->map)
-		(ft_lstclear(&data->list), exit (1));
-	data->map->height = 0;
-	data->map->width = 0;
-	// data->map->arr_map = NULL;
-	data->i = 0;
-	data->j = 0;
-	data->size = 0;
-	data->player = malloc(sizeof(t_player));
-	if (!data->player)
-		(ft_lstclear(&data->list), free(data->map), exit(1));
-	data->texture = malloc(sizeof(t_texture));
-	if (!data->texture)
-		(ft_lstclear(&data->list), free(data->map),
-			free(data->player), exit(1));
-	data->player->x = 0.0;
-	data->player->y = 0.0;
-	data->player->isFacing = '0';
 }
 
 void	fill_list(t_data *data, char *av)

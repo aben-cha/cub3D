@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_elements.c                                     :+:      :+:    :+:   */
+/*   get_elements_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 19:16:11 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/08/02 19:16:11 by aben-cha         ###   ########.fr       */
+/*   Created: 2024/09/02 18:07:29 by aben-cha          #+#    #+#             */
+/*   Updated: 2024/09/02 18:07:29 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,37 +41,20 @@ int	set_color(t_color *color, char *color_path, int i)
 	return (free(color_path), free_array(type), 0);
 }
 
-void	set_element(t_data *data, char *s, int *size, char c)
-{
-	int	i;
-
-	i = 0;
-	handle_space(s, &i, size);
-	if (s[0] == '\n' || s[i] == '\n')
-	{
-		if (data->texturel)
-			ft_lstclear(&data->texturel);
-		free_data(data, 0);
-		print_error("Invalid Path.");
-	}
-	ft_lstadd_back(&data->texturel,
-		ft_lstnew(ft_substr(s, i, *size - i + 1), c));
-}
-
-void	get_element(t_data *data, char *s, int *size, int *i)
+void	get_element(t_data *data, char *s, int *size)
 {
 	if (!ft_strncmp(s, "NO", 2))
-		(set_element(data, s + 2, size, 'N'), (*i)++);
+		(set_element(data, s + 2, size, 'N'));
 	else if (!ft_strncmp(s, "SO", 2))
-		(set_element(data, s + 2, size, 'S'), (*i)++);
+		(set_element(data, s + 2, size, 'S'));
 	else if (!ft_strncmp(s, "WE", 2))
-		(set_element(data, s + 2, size, 'W'), (*i)++);
+		(set_element(data, s + 2, size, 'W'));
 	else if (!ft_strncmp(s, "EA", 2))
-		(set_element(data, s + 2, size, 'E'), (*i)++);
+		(set_element(data, s + 2, size, 'E'));
 	else if (!ft_strncmp(s, "F", 1))
-		(set_element(data, s + 1, size, 'F'), (*i)++);
+		(set_element(data, s + 1, size, 'F'));
 	else if (!ft_strncmp(s, "C", 1))
-		(set_element(data, s + 1, size, 'C'), (*i)++);
+		(set_element(data, s + 1, size, 'C'));
 }
 
 int	get_color(t_element *element, char *color, char type)
@@ -119,13 +102,10 @@ t_list	*get_map(t_data *data)
 	{
 		s = head->content;
 		handle_space(s, &data->j, &data->size);
-		get_element(data, s + data->j, &data->size, &data->i);
-		if (data->i == 6 || s[data->j] == '1')
+		get_element(data, s + data->j, &data->size);
+		if (s[data->j] == '1')
 		{
-			if (head->next)
-				ptr = head->next;
-			while (ptr && ft_strlen(ptr->content) == 1)
-				ptr = ptr->next;
+			ptr = head;
 			break ;
 		}
 		head = head->next;

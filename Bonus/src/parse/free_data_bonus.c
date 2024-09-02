@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_data.c                                        :+:      :+:    :+:   */
+/*   free_data_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 19:15:29 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/02 17:10:03 by ataoufik         ###   ########.fr       */
+/*   Created: 2024/09/02 18:06:42 by aben-cha          #+#    #+#             */
+/*   Updated: 2024/09/02 18:07:20 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	free_structs(t_data *data)
 	free(data->map);
 	free(data->player);
 	free(data->texture);
+	free(data->animation);
 }
 
 void	print_error(char *str)

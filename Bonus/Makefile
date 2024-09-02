@@ -8,9 +8,9 @@ RM = rm -f
 OBJ_DIR = obj
 SRC_DIR = src
 SRC = $(SRC_DIR)/main_bonus.c $(SRC_DIR)/ft_player_bonus.c $(SRC_DIR)/draw_env_bonus.c $(SRC_DIR)/update_env_bonus.c $(SRC_DIR)/ft_map_bonus.c $(SRC_DIR)/raycasting_bonus.c $(SRC_DIR)/projection3d_bonus.c $(SRC_DIR)/utils_raycasting_bonus.c  $(SRC_DIR)/utils_projection3d_bonus.c $(SRC_DIR)/utils1_projection3d_bonus.c \
-	  $(SRC_DIR)/animation_bonus.c $(SRC_DIR)/load_png_bonus.c \
+	  $(SRC_DIR)/animation_bonus.c $(SRC_DIR)/load_png_bonus.c $(SRC_DIR)/load_textures_bonus.c \
       $(SRC_DIR)/parse/first_parse_bonus.c $(SRC_DIR)/parse/check_map_bonus.c $(SRC_DIR)/parse/get_elements_bonus.c $(SRC_DIR)/parse/free_data_bonus.c $(SRC_DIR)/parse/utils_bonus.c \
-      $(SRC_DIR)/get_next_line/get_next_line.c $(SRC_DIR)/get_next_line/get_next_line_utils.c $(SRC_DIR)/parse/linked_list_bonus.c
+      $(SRC_DIR)/get_next_line/get_next_line.c $(SRC_DIR)/get_next_line/get_next_line_utils.c $(SRC_DIR)/parse/linked_list_bonus.c $(SRC_DIR)/parse/init_data_bonus.c
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:$(SRC_DIR)/%.c=%.o))
 LIBFT = src/libft/libft.a
 

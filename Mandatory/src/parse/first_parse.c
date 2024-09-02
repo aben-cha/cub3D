@@ -23,31 +23,6 @@ void	read_data(int *fd, char *av)
 		print_error("Error opening file.");
 }
 
-void	data_init(t_data *data)
-{
-	data->list = NULL;
-	data->texturel = NULL;
-	data->string = NULL;
-	data->map = malloc(sizeof(t_map));
-	if (!data->map)
-		(ft_lstclear(&data->list), exit (1));
-	data->map->height = 0;
-	data->map->width = 0;
-	data->i = 0;
-	data->j = 0;
-	data->size = 0;
-	data->player = malloc(sizeof(t_player));
-	if (!data->player)
-		(ft_lstclear(&data->list), free(data->map), exit(1));
-	data->texture = malloc(sizeof(t_texture));
-	if (!data->texture)
-		(ft_lstclear(&data->list), free(data->map),
-			free(data->player), exit(1));
-	data->player->x = 0.0;
-	data->player->y = 1.0;
-	data->player->isFacing = '0';
-}
-
 void	fill_list(t_data *data, char *av)
 {
 	read_data(&data->fd, av);

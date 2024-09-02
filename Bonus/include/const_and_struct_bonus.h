@@ -34,8 +34,11 @@ typedef struct s_player
     double  view_player;
     int     turnDir;
     int     walkDirection;
+    int turnDirection;
+    float   rotationAngle;
     float   rotAngle;
     float   moveSpeed;
+    float   rotationSpeed;
     mlx_image_t *img_player;
     float rotSpeed;
 

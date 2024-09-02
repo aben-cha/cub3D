@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 11:42:27 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/01 10:49:18 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/02 18:19:16 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	another_char(char *s, char *ptr)
 	return (1);
 }
 
-int	is_adjacent(t_data *data, char **map, char space, char c)
+int	is_adjacent(t_data *data, char **map)
 {
 	int	y;
 	int	x;
@@ -65,17 +65,34 @@ int	is_adjacent(t_data *data, char **map, char space, char c)
 		x = 0;
 		while (++x < data->map->width - 1)
 		{
-			if (!another_char(data->map->arr_map[y], "01NSEW "))
+			if (!another_char(data->map->arr_map[y], "01NSEWDC "))
 				return (free_array(data->map->arr_map), free_data(data, 1),
 					print_error("another char exist"), 1);
-			if (map[y][x] == space)
+			if (map[y][x] == '0' || map[y][x] == data->player->isFacing)
 			{
-				if (map[y][x + 1] == c || map[y][x - 1] == c
-					|| map[y - 1][x] == c || map[y + 1][x] == c)
+				if (map[y][x + 1] == 32 || map[y][x - 1] == 32
+					|| map[y - 1][x] == 32 || map[y + 1][x] == 32)
 					return (free_array(data->map->arr_map),
 						free_data(data, 1), 1);
 			}
 		}
 	}
 	return (0);
+}
+
+void	set_element(t_data *data, char *s, int *size, char c)
+{
+	int	i;
+
+	i = 0;
+	handle_space(s, &i, size);
+	if (s[0] == '\n' || s[i] == '\n')
+	{
+		if (data->texturel)
+			ft_lstclear(&data->texturel);
+		free_data(data, 0);
+		print_error("Invalid Path.");
+	}
+	ft_lstadd_back(&data->texturel,
+		ft_lstnew(ft_substr(s, i, *size - i + 1), c));
 }
