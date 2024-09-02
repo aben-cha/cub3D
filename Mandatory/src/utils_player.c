@@ -6,26 +6,29 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:14:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/02 16:03:22 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:32:44 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void rest_image(mlx_image_t *image)
+void	rest_image(mlx_image_t *image)
 {
-    uint32_t x = 0;
-    uint32_t y = 0;
-    while (x < image->width)
-    {
-        y = 0;
-        while (y < image->height)
-        {
-            mlx_put_pixel(image, x, y, 0);
-            y++;
-        }
-        x++;
-    }
+	uint32_t	x;
+	uint32_t	y;
+
+	x = 0;
+	y = 0;
+	while (x < image->width)
+	{
+		y = 0;
+		while (y < image->height)
+		{
+			mlx_put_pixel(image, x, y, 0);
+			y++;
+		}
+		x++;
+	}
 }
 
 int	ft_check_arr(t_data *data, t_pos *p1, t_pos *point)

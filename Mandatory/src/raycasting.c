@@ -10,8 +10,7 @@
 /*																			  */
 /* ************************************************************************** */
 
-#include"../include/cub3d.h"
-
+#include "../include/cub3d.h"
 
 void	ft_cast_all_rays(t_data *data)
 {

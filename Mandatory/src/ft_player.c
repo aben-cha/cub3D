@@ -6,10 +6,9 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:19:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/02 16:03:03 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:33:41 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../include/cub3d.h"
 
@@ -78,8 +77,8 @@ int	ft_update_position_player(t_data *data)
 	return (0);
 }
 
-void    ft_player(t_data *data)
+void	ft_player(t_data *data)
 {
-    rest_image(data->player->img_player);
-    ft_cast_all_rays(data);
+	rest_image(data->player->img_player);
+	ft_cast_all_rays(data);
 }
