@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_png.c                                         :+:      :+:    :+:   */
+/*   load_png_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 20:32:59 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/02 17:06:24 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/03 11:52:44 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,19 @@ void	ft_load_imges_wait(t_data *data, char *str1)
 	while (i < NUM_IMAGES_WAIT)
 	{
 		str = ft_png_name(str1, ".png", i + 1);
+		if (!str)
+		{
+			free_array(data->map->arr_map);
+			free_data(data, 1);
+			print_error("Failed to load image.");
+		}
 		data->animation->textures_wait[i] = mlx_load_png(str);
 		free(str);
 		if (!data->animation->textures_wait[i])
 		{
-			fprintf(stderr, "Failed to load image wait %d\n", i + 1);
-			exit(EXIT_FAILURE);
+			free_array(data->map->arr_map);
+			free_data(data, 1);
+			print_error("Failed to load image.");
 		}
 		i++;
 	}
@@ -53,12 +60,19 @@ void	ft_load_imges_shot(t_data *data, char *str1)
 	while (i < NUM_IMAGES_SHOT)
 	{
 		str = ft_png_name(str1, ".png", i + 1);
+		if (!str)
+		{
+			free_array(data->map->arr_map);
+			free_data(data, 1);
+			print_error("Failed to load image.");
+		}
 		data->animation->textures_shot[i] = mlx_load_png(str);
 		free(str);
-		if (!data->animation->textures_shot[i])
+		if (!data->animation->textures_wait[i])
 		{
-			fprintf(stderr, "Failed to load image shot %d\n", i + 1);
-			exit(EXIT_FAILURE);
+			free_array(data->map->arr_map);
+			free_data(data, 1);
+			print_error("Failed to load image.");
 		}
 		i++;
 	}
@@ -73,12 +87,19 @@ void	ft_load_imges_load(t_data *data, char *str1)
 	while (i < NUM_IMAGES_LOAD)
 	{
 		str = ft_png_name(str1, ".png", i + 1);
+		if (!str)
+		{
+			free_array(data->map->arr_map);
+			free_data(data, 1);
+			print_error("Failed to load image.");
+		}
 		data->animation->textures_load[i] = mlx_load_png(str);
 		free(str);
-		if (!data->animation->textures_load[i])
+		if (!data->animation->textures_wait[i])
 		{
-			fprintf(stderr, "Failed to load image  load %d\n", i + 1);
-			exit(EXIT_FAILURE);
+			free_array(data->map->arr_map);
+			free_data(data, 1);
+			print_error("Failed to load image.");
 		}
 		i++;
 	}
