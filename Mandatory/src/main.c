@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/03 18:52:48 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/03 23:16:05 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	main(int ac, char **av)
 {
 	t_data	data_mlx;
 
+	(void)ac;
 	parsing(&data_mlx, av[1]);
 	ft_cub3d(&data_mlx);
 	mlx_loop_hook(data_mlx.mlx, ft_update_env, &data_mlx);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:16:25 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/03 18:39:01 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:45:13 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	load_textures(t_data *data)
 	t_list	*head;
 
 	head = data->texturel;
-	load_png(data, &data->texture->walltexteur_d, "./door.png");
+	load_png(data, &data->texture->walltexteur_d, "./texture/door.png");
 	while (head)
 	{
 		if (head->c == 'N')

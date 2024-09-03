@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projection3d.c                                     :+:      :+:    :+:   */
+/*   projection3d_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:57:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/02 17:06:24 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/03 23:45:56 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	ft_init_offset(t_ray *ray, int sig)
 	int	offset_x;
 
 	if (sig == 0)
-		offset_x = (int)ray->y_intercept % TILE_SIZE;
+		offset_x = (int)ray->y_intercept % 1;
 	else
-		offset_x = (int)ray->x_intercept % TILE_SIZE;
+		offset_x = (int)ray->x_intercept % 1;
 	return (offset_x);
 }
 

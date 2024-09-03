@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_png_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 20:32:59 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/03 18:44:57 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:47:11 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	load_images(t_data *data)
 	data->animation->frame_delay = 3;
 	data->animation->frame_delay_load = 6;
 	data->animation->delay_counter = 3;
-	ft_load_imges_wait(data, "png/wait/wait_");
-	ft_load_imges_shot(data, "png/shot/shot_");
-	ft_load_imges_load(data, "png/load/load_");
+	ft_load_imges_wait(data, "Bonus/png/wait/wait_");
+	ft_load_imges_shot(data, "Bonus/png/shot/shot_");
+	ft_load_imges_load(data, "Bonus/png/load/load_");
 }

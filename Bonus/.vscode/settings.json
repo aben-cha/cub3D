@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "cub3d_bonus.h": "c",
-        "const_and_struct_bonus.h": "c",
-        "mlx42.h": "c"
-    }
-}

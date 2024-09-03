@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:40:06 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/02 16:06:56 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/03 23:20:05 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ uint32_t	get_pixel_color(mlx_texture_t *texture, int x, int y)
 {
 	int	index;
 
-	if (x < 0 || x >= texture->width || y < 0 || y >= texture->height)
+	if (x < 0 || (uint32_t)x >= texture->width || y < 0 || (uint32_t)y >= texture->height)
 		return (0);
 	index = (y * texture->width) + x;
 	return (((uint32_t *)texture->pixels)[index]);

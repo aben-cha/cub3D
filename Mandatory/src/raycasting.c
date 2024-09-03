@@ -73,7 +73,7 @@ t_ray	ft_rays_horizontal(t_data *data, t_ray *ray, float rangle)
 	ft_find_wall_hor(data, &new, &step, ray);
 	d.x = new.x - data->player->x;
 	d.y = new.y - data->player->y;
-	return ((t_ray){d.x, d.y, new.x, new.y});
+	return ((t_ray){d.x, d.y, new.x, new.y, 0, 0, 0, 0, 0});
 }
 
 t_ray	ft_rays_vertical(t_data *data, t_ray *ray, float rangle)
@@ -100,5 +100,5 @@ t_ray	ft_rays_vertical(t_data *data, t_ray *ray, float rangle)
 	ft_find_wall_ver(data, &new, &step, ray);
 	d.x = new.x - data->player->x;
 	d.y = new.y - data->player->y;
-	return ((t_ray){d.x, d.y, new.x, new.y});
+	return ((t_ray){d.x, d.y, new.x, new.y, 0, 0, 0, 0, 0});
 }

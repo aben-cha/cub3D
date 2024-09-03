@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_env_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:36:50 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/03 19:23:00 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/03 23:12:18 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	wasd_keys(t_data *data)
 		ft_update_position_player(data);
 		ft_player(data);
 	}
-	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
+	else if (mlx_is_key_down(data->mlx, MLX_KEY_S))
 	{
 		data->player->walkdirection = -1;
 		ft_update_position_player(data);
@@ -46,7 +46,7 @@ void	wasd_keys(t_data *data)
 		ft_update_position_player(data);
 		ft_player(data);
 	}
-	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+	else if (mlx_is_key_down(data->mlx, MLX_KEY_A))
 	{
 		data->player->view_player = 2;
 		ft_update_position_player(data);
