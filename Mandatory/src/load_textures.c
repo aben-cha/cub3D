@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 10:42:14 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/02 18:29:49 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:19:37 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	convert_abgr_to_rgba(t_data *data, mlx_texture_t *texture)
 void	load_png(t_data *data, mlx_texture_t **mlx_texture, char *path)
 {
 	*mlx_texture = mlx_load_png(path);
-	if (!mlx_texture)
+	if (!*mlx_texture)
 	{
 		free_array(data->map->arr_map);
 		free_data(data, 1);

@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:01 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/03 11:47:11 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/03 18:45:18 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,10 @@ int				all_element_exist(t_data *data);
 
 //free_data.c
 void			free_array(char **array);
-void			free_structs(t_data *data);
 void			print_error(char *str);
 void			free_data(t_data *data, int flag);
+void	        free_data_mlx(t_data *data, int flag);
+void            delete_textures(mlx_texture_t **textures, int i);
 
 //get_elements.c
 int				set_color(t_color *color, char *color_path, int i);

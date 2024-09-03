@@ -25,6 +25,8 @@ void	ft_cast_all_rays(t_data *data)
 	while (i < NBR_RAYS)
 	{
 		ray = malloc(sizeof(t_ray));
+		if (!ray)
+			(free_data_mlx(data, 2), exit(1));
 		rayangle = ft_normalizeangle(rayangle);
 		ft_rays_where_is_facing(ray, rayangle);
 		horizontal = ft_rays_horizontal(data, ray, rayangle);
@@ -34,6 +36,7 @@ void	ft_cast_all_rays(t_data *data)
 		data->rayangle = rayangle;
 		ft_which_ray_used(data, &vertical, &horizontal, i);
 		rayangle += FOV_ANGLE / NBR_RAYS;
+		free(ray);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:01:00 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/03 11:54:06 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/03 19:22:37 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,45 @@ void	parsing(t_data *data, char *av)
 	load_textures(data);
 }
 
+void	image_to_window(t_data *data)
+{
+	if (mlx_image_to_window(data->mlx, data->player->img_player, 0, 0) == -1)
+	{
+		free_data_mlx(data, 3);
+		print_error("mlx_image_to_window failed.");
+	}
+	if (mlx_image_to_window(data->mlx, data->map->img_map, 40, 600) == -1)
+	{
+		free_data_mlx(data, 3);
+		print_error("mlx_image_to_window failed.");
+	}
+}
+
 void	ft_cub3d(t_data *data)
 {
 	data->mlx = mlx_init(WINDOW_WHIDTH, WINDOW_HEIGHT, "cub3D", 1);
 	if (data->mlx == NULL)
 	{
-		free_array(data->map->arr_map);
-		free_data(data, 1);
+		free_data_mlx(data, 0);
 		print_error("mlx_init failed.");
 	}
 	data->player->img_player = mlx_new_image(data->mlx,
 			data->mlx->width, data->mlx->height);
+	if (data->player->img_player == NULL)
+	{
+		free_data_mlx(data, 1);
+		print_error("mlx_image failed.");
+	}
 	data->map->img_map = mlx_new_image(data->mlx, TILE_MAP, TILE_MAP);
 	if (data->player->img_player == NULL)
 	{
-		free_array(data->map->arr_map);
-		free_data(data, 1);
+		mlx_delete_image(data->mlx, data->player->img_player);
+		free_data_mlx(data, 1);
 		print_error("mlx_image failed.");
 	}
 	load_images(data);
 	ft_player(data);
-	mlx_image_to_window(data->mlx, data->player->img_player, 0, 0);
-	mlx_image_to_window(data->mlx, data->map->img_map, 40, 600);
+	image_to_window(data);
 }
 
 int	main(int ac, char **av)
@@ -53,5 +70,6 @@ int	main(int ac, char **av)
 	mlx_loop_hook(data_mlx.mlx, ft_update_env, &data_mlx);
 	mlx_set_cursor_mode(data_mlx.mlx, MLX_MOUSE_DISABLED);
 	mlx_loop(data_mlx.mlx);
+	free_data_mlx(&data_mlx, 4);
 	return (0);
 }

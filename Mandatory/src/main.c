@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:30:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/03 11:14:52 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/03 18:52:48 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,22 @@ void	ft_cub3d(t_data *data)
 	data->mlx = mlx_init(WINDOW_WHIDTH, WINDOW_HEIGHT, "cub3D", 1);
 	if (data->mlx == NULL)
 	{
-		free_array(data->map->arr_map);
-		free_data(data, 1);
+		free_data_mlx(data, 0);
 		print_error("mlx_init failed.");
 	}
 	data->player->img_player = mlx_new_image(data->mlx,
 			data->mlx->width, data->mlx->height);
 	if (data->player->img_player == NULL)
 	{
-		free_array(data->map->arr_map);
-		free_data(data, 1);
+		free_data_mlx(data, 1);
 		print_error("mlx_new_image failed.");
 	}
 	ft_player(data);
-	mlx_image_to_window(data->mlx, data->player->img_player, 0, 0);
+	if (mlx_image_to_window(data->mlx, data->player->img_player, 0, 0) == -1)
+	{
+		free_data_mlx(data, 2);
+		print_error("mlx_image_to_window failed.");
+	}
 }
 
 int	main(int ac, char **av)
@@ -49,5 +51,7 @@ int	main(int ac, char **av)
 	ft_cub3d(&data_mlx);
 	mlx_loop_hook(data_mlx.mlx, ft_update_env, &data_mlx);
 	mlx_loop(data_mlx.mlx);
+	mlx_delete_image(data_mlx.mlx, data_mlx.player->img_player);
+	free_data_mlx(&data_mlx, 0);
 	return (0);
 }

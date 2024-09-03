@@ -39,8 +39,7 @@ void	fill_list(t_data *data, char *av)
 	if (!data->list)
 	{
 		close(data->fd);
-		ft_lstclear(&data->list);
-		free_structs(data);
+		free_data(data, 0);
 		print_error("Empty file.");
 	}
 	close(data->fd);

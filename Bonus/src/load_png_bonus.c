@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 20:32:59 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/03 11:52:44 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/03 18:44:57 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,21 @@ void	ft_load_imges_wait(t_data *data, char *str1)
 	int		i;
 
 	i = 0;
-	while (i < NUM_IMAGES_WAIT)
+	while (i < N_IMAGES_WAIT)
 	{
 		str = ft_png_name(str1, ".png", i + 1);
 		if (!str)
 		{
-			free_array(data->map->arr_map);
-			free_data(data, 1);
+			free_data_mlx(data, 2);
 			print_error("Failed to load image.");
 		}
 		data->animation->textures_wait[i] = mlx_load_png(str);
 		free(str);
 		if (!data->animation->textures_wait[i])
 		{
-			free_array(data->map->arr_map);
-			free_data(data, 1);
-			print_error("Failed to load image.");
+			delete_textures(data->animation->textures_wait, i);
+			free_data_mlx(data, 2);
+			print_error("Failed to load texture.");
 		}
 		i++;
 	}
@@ -57,22 +56,22 @@ void	ft_load_imges_shot(t_data *data, char *str1)
 	int		i;
 
 	i = 0;
-	while (i < NUM_IMAGES_SHOT)
+	while (i < N_IMAGES_SHOT)
 	{
 		str = ft_png_name(str1, ".png", i + 1);
 		if (!str)
 		{
-			free_array(data->map->arr_map);
-			free_data(data, 1);
+			free_data_mlx(data, 2);
 			print_error("Failed to load image.");
 		}
 		data->animation->textures_shot[i] = mlx_load_png(str);
 		free(str);
 		if (!data->animation->textures_wait[i])
 		{
-			free_array(data->map->arr_map);
-			free_data(data, 1);
-			print_error("Failed to load image.");
+			delete_textures(data->animation->textures_shot, i);
+			delete_textures(data->animation->textures_wait, N_IMAGES_WAIT + 1);
+			free_data_mlx(data, 2);
+			print_error("Failed to load texture.");
 		}
 		i++;
 	}
@@ -84,22 +83,23 @@ void	ft_load_imges_load(t_data *data, char *str1)
 	int		i;
 
 	i = 0;
-	while (i < NUM_IMAGES_LOAD)
+	while (i < N_IMAGES_LOAD)
 	{
 		str = ft_png_name(str1, ".png", i + 1);
 		if (!str)
 		{
-			free_array(data->map->arr_map);
-			free_data(data, 1);
+			free_data_mlx(data, 2);
 			print_error("Failed to load image.");
 		}
 		data->animation->textures_load[i] = mlx_load_png(str);
 		free(str);
 		if (!data->animation->textures_wait[i])
 		{
-			free_array(data->map->arr_map);
-			free_data(data, 1);
-			print_error("Failed to load image.");
+			delete_textures(data->animation->textures_load, i);
+			delete_textures(data->animation->textures_shot, N_IMAGES_SHOT + 1);
+			delete_textures(data->animation->textures_wait, N_IMAGES_WAIT + 1);
+			free_data_mlx(data, 2);
+			print_error("Failed to load texture.");
 		}
 		i++;
 	}

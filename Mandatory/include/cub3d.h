@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:23:02 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/03 11:09:16 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/03 15:35:39 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void			free_array(char **array);
 void			free_structs(t_data *data);
 void			print_error(char *str);
 void			free_data(t_data *data, int flag);
+void	        free_data_mlx(t_data *data, int flag);
 
 //get_elements.c
 int				set_color(t_color *color, char *color_path, int i);

@@ -13,9 +13,9 @@
 #include "../src/get_next_line/get_next_line.h"
 #include "MLX42.h"
 
-#define NUM_IMAGES_WAIT 6
-#define NUM_IMAGES_SHOT 14
-#define NUM_IMAGES_LOAD 37
+#define N_IMAGES_WAIT 6
+#define N_IMAGES_SHOT 14
+#define N_IMAGES_LOAD 37
 #define NUM_IMAGES_VIEW 67
 #define TILE_SIZE 1024//
 #define TILE_SIZE_MAP 32// 32 tile size just fo map
@@ -52,9 +52,9 @@ typedef struct s_animaction
     int delay_counter;
     int frame_delay_load;
     int delay_counter_load;
-    mlx_texture_t *textures_wait[NUM_IMAGES_WAIT];
-    mlx_texture_t *textures_shot[NUM_IMAGES_SHOT];
-    mlx_texture_t *textures_load[NUM_IMAGES_LOAD];
+    mlx_texture_t *textures_wait[N_IMAGES_WAIT];
+    mlx_texture_t *textures_shot[N_IMAGES_SHOT];
+    mlx_texture_t *textures_load[N_IMAGES_LOAD];
     mlx_texture_t *textures_view[NUM_IMAGES_VIEW];
 
 }   t_animation;
