@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:13:07 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/02 18:13:11 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/03 10:57:13 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	data_init(t_data *data)
 			free(data->player), free(data->animation), exit(1));
 	data->player->x = 0.0;
 	data->player->y = 0.0;
-	data->player->isFacing = '0';
+	data->player->isfacing = '0';
 }
 
 int	position_of_player(t_data *data, char **map)
@@ -65,7 +65,7 @@ int	position_of_player(t_data *data, char **map)
 			if (map[y][x] == 'N' || map[y][x] == 'S'
 				|| map[y][x] == 'W' || map[y][x] == 'E')
 			{
-				data->player->isFacing = data->map->arr_map[y][x];
+				data->player->isfacing = data->map->arr_map[y][x];
 				data->player->x = (float)x * TILE_SIZE + TILE_SIZE / 2;
 				data->player->y = (float)y * TILE_SIZE + TILE_SIZE / 2;
 				i++;
@@ -80,23 +80,23 @@ int	position_of_player(t_data *data, char **map)
 void	init_data_player(t_data *data)
 {
 	data->player->radius = 5;
-	data->player->turnDirection = 0;
-	data->player->walkDirection = 1;
-	data->player->moveSpeed = 100;
+	data->player->turndir = 0;
+	data->player->walkdirection = 1;
+	data->player->movespeed = 100;
 	data->player->view_player = 0;
-	data->player->rotationSpeed = 20 * (M_PI / 180);
-	if (data->player->isFacing == '0')
+	data->player->rotspeed = 20 * (M_PI / 180);
+	if (data->player->isfacing == '0')
 	{
 		free_array(data->map->arr_map);
 		free_data(data, 1);
 		print_error("Player is not found.");
 	}
-	if (data->player->isFacing == 'N')
-		data->player->rotationAngle = 3 * (M_PI / 2);
-	else if (data->player->isFacing == 'E')
-		data->player->rotationAngle = 0;
-	else if (data->player->isFacing == 'S')
-		data->player->rotationAngle = M_PI / 2;
-	else if (data->player->isFacing == 'W')
-		data->player->rotationAngle = M_PI;
+	if (data->player->isfacing == 'N')
+		data->player->rotangle = 3 * (M_PI / 2);
+	else if (data->player->isfacing == 'E')
+		data->player->rotangle = 0;
+	else if (data->player->isfacing == 'S')
+		data->player->rotangle = M_PI / 2;
+	else if (data->player->isfacing == 'W')
+		data->player->rotangle = M_PI;
 }

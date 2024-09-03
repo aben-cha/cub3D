@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_player.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:19:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/02 17:33:41 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/03 10:57:13 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ int	ft_update_position_player(t_data *data)
 	float	new_x;
 	float	new_y;
 
-	data->player->rotAngle += (data->player->turnDir * data->player->rotSpeed);
-	angle = data->player->rotAngle;
+	data->player->rotangle += (data->player->turndir * data->player->rotspeed);
+	angle = data->player->rotangle;
 	if (data->player->view_player == 1)
 		angle += M_PI / 2;
 	else if (data->player->view_player == 2)
 		angle -= M_PI / 2;
 	data->player->view_player = 0;
-	move_step = data->player->walkDirection * data->player->moveSpeed;
+	move_step = data->player->walkdirection * data->player->movespeed;
 	new_x = data->player->x + cos(angle) * move_step;
 	new_y = data->player->y + sin(angle) * move_step;
 	if (ft_check_wall_intersection(data, new_x, new_y) != 1)

@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:16:25 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/02 18:35:21 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/03 10:56:47 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	mouse(void *param)
 
 	data = (t_data *)param;
 	mlx_get_mouse_pos(data->mlx, &x, &y);
-	data->player->rotationAngle += (float)(x
+	data->player->rotangle += (float)(x
 			- (WINDOW_WHIDTH / 2)) / (WINDOW_HEIGHT / 2);
 	mlx_set_mouse_pos(data->mlx, WINDOW_WHIDTH / 2, WINDOW_HEIGHT / 2);
 	ft_player(data);

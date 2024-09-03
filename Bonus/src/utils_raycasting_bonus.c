@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_raycasting.c                                 :+:      :+:    :+:   */
+/*   utils_raycasting_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 15:11:04 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/02 17:06:24 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/03 10:56:47 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ void	ft_which_ray_used(t_data *data, t_ray *ver, t_ray *hor, int i)
 	d_v = sqrtf(pow(ver->dx, 2) + pow(ver->dy, 2));
 	if (d_h <= d_v)
 	{
-		cdistance = d_h * cos(data->rayangle - data->player->rotAngle);
+		cdistance = d_h * cos(data->rayangle - data->player->rotangle);
 		data->distance = cdistance;
 		ft_projection3d(data, i, 1, hor);
 	}
 	else
 	{
-		cdistance = d_v * cos(data->rayangle - data->player->rotAngle);
+		cdistance = d_v * cos(data->rayangle - data->player->rotangle);
 		data->distance = cdistance;
 		ft_projection3d(data, i, 0, ver);
 	}

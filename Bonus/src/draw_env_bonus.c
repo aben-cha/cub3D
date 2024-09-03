@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_env.c                                         :+:      :+:    :+:   */
+/*   draw_env_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:14:18 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/02 17:06:24 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/03 10:56:47 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	view_player(t_data *data, int color)
 
 	center.x = TILE_MAP / 2;
 	center.y = TILE_MAP / 2;
-	x1 = center.x + cos(data->player->rotAngle) * 30;
-	y1 = center.y + sin(data->player->rotAngle) * 30;
+	x1 = center.x + cos(data->player->rotangle) * 30;
+	y1 = center.y + sin(data->player->rotangle) * 30;
 	last_point.x = x1;
 	last_point.y = y1;
 	draw_line(data, &center, &last_point, color);
