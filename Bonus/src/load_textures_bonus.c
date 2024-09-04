@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:16:25 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/03 22:45:13 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/04 22:39:38 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,17 @@ void	load_textures(t_data *data)
 	t_list	*head;
 
 	head = data->texturel;
-	load_png(data, &data->texture->walltexteur_d, "./texture/door.png");
+	load_png(data, &data->texture->wall_tex_d, "./texture/door.png");
 	while (head)
 	{
 		if (head->c == 'N')
-			load_png(data, &data->texture->walltexteur_n, head->content);
+			load_png(data, &data->texture->wall_tex_n, head->content);
 		else if (head->c == 'S')
-			load_png(data, &data->texture->walltexteur_s, head->content);
+			load_png(data, &data->texture->wall_tex_s, head->content);
 		else if (head->c == 'E')
-			load_png(data, &data->texture->walltexteur_e, head->content);
+			load_png(data, &data->texture->wall_tex_e, head->content);
 		else if (head->c == 'W')
-			load_png(data, &data->texture->walltexteur_w, head->content);
+			load_png(data, &data->texture->wall_tex_w, head->content);
 		head = head->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:46:39 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 12:42:12 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/04 22:39:38 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ typedef struct s_player
 
 typedef struct s_texture
 {
-	mlx_texture_t	*walltexteur_n;
-	mlx_texture_t	*walltexteur_s;
-	mlx_texture_t	*walltexteur_w;
-	mlx_texture_t	*walltexteur_e;
+	mlx_texture_t	*wall_tex_n;
+	mlx_texture_t	*wall_tex_s;
+	mlx_texture_t	*wall_tex_w;
+	mlx_texture_t	*wall_tex_e;
 }	t_texture;
 
 typedef struct s_map
@@ -84,6 +84,14 @@ typedef struct s_ray
 	float	ray_angle;
 }				t_ray;
 
+typedef struct s_number
+{
+	int		n;
+	int 	s;
+	int		e;
+	int		w;
+} t_number;
+
 typedef struct s_data
 {
 	int			j;
@@ -102,6 +110,7 @@ typedef struct s_data
 	t_map		*map;
 	t_player	*player;
 	t_ray		*ray;
+	t_number	number;
 }				t_data;
 
 typedef struct s_position

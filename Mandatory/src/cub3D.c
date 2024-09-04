@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:47:46 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 12:47:48 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/04 22:32:28 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	parsing(t_data *data, char *av)
 {
+	t_list	*head;
+	
 	fill_list(data, av);
 	is_valid_map(data);
 	init_data_player(data);
-	load_textures(data);
+	head = data->texturel;
+	load_textures(data, head);
 }
 
 void	ft_cub3d(t_data *data)
@@ -43,16 +46,21 @@ void	ft_cub3d(t_data *data)
 	}
 }
 
+void	f(void)
+{
+	system("leaks cub3D");
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data_mlx;
 
 	(void)ac;
+	atexit(f);
 	parsing(&data_mlx, av[1]);
 	ft_cub3d(&data_mlx);
 	mlx_loop_hook(data_mlx.mlx, ft_update_env, &data_mlx);
 	mlx_loop(data_mlx.mlx);
-	mlx_delete_image(data_mlx.mlx, data_mlx.player->img_player);
 	free_data_mlx(&data_mlx, 0);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:47:00 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 02:01:23 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/04 22:33:14 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,10 @@ int	position_of_player(t_data *data, char **map)
 
 void	init_data_player(t_data *data)
 {
+	data->number.n = 0;
+	data->number.s = 0;
+	data->number.e = 0;
+	data->number.w = 0;
 	data->player->radius = 5;
 	data->player->turndir = 0;
 	data->player->walkdirection = 1;

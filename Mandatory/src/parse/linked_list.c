@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 16:59:24 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/01 10:30:52 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:42:42 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	ft_lstclear(t_list **lst)
 	while (ptr)
 	{
 		ptr1 = ptr -> next;
+		free(ptr->content);
 		free(ptr);
 		ptr = ptr1;
 	}

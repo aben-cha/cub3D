@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 19:15:29 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/03 17:52:39 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/04 22:39:38 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void	free_data(t_data *data, int flag)
 
 void	free_data_mlx(t_data *data, int flag)
 {
-	mlx_delete_texture(data->texture->walltexteur_n);
-	mlx_delete_texture(data->texture->walltexteur_e);
-	mlx_delete_texture(data->texture->walltexteur_s);
-	mlx_delete_texture(data->texture->walltexteur_w);
-	if (flag == 2)
+	mlx_delete_texture(data->texture->wall_tex_n);
+	mlx_delete_texture(data->texture->wall_tex_e);
+	mlx_delete_texture(data->texture->wall_tex_s);
+	mlx_delete_texture(data->texture->wall_tex_w);
+	if (flag == 2 || flag == 0)
 		mlx_delete_image(data->mlx, data->player->img_player);
 	free_array(data->map->arr_map);
 	free_data(data, 1);

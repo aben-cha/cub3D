@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:50:32 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 12:57:20 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/04 22:39:38 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ typedef struct s_animaction
 
 typedef struct s_texture
 {
-	mlx_texture_t	*walltexteur_n;
-	mlx_texture_t	*walltexteur_s;
-	mlx_texture_t	*walltexteur_w;
-	mlx_texture_t	*walltexteur_e;
-	mlx_texture_t	*walltexteur_d;
+	mlx_texture_t	*wall_tex_n;
+	mlx_texture_t	*wall_tex_s;
+	mlx_texture_t	*wall_tex_w;
+	mlx_texture_t	*wall_tex_e;
+	mlx_texture_t	*wall_tex_d;
 }	t_texture;
 
 typedef struct s_map

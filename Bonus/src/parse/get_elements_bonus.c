@@ -28,7 +28,7 @@ int	set_color(t_color *color, char *color_path, int i)
 	}
 	type = ft_split(color_path, ',');
 	if (!type)
-		return (free(color_path), 1);
+		return (1);
 	i = -1;
 	while (type && type[++i])
 	{
@@ -38,7 +38,7 @@ int	set_color(t_color *color, char *color_path, int i)
 	color->red = ft_atoi(type[0]);
 	color->green = ft_atoi(type[1]);
 	color->blue = ft_atoi(type[2]);
-	return (free(color_path), free_array(type), 0);
+	return (free_array(type), 0);
 }
 
 void	get_element(t_data *data, char *s, int *size)

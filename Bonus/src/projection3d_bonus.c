@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projection3d_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:57:48 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/04 01:59:15 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/04 22:39:38 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ uint32_t	ft_width_texteur(t_data *data)
 
 	width = 0;
 	if (data->flagdoor == 1)
-		width = data->texture->walltexteur_d->width;
+		width = data->texture->wall_tex_d->width;
 	else if (data->n == 1)
-		width = data->texture->walltexteur_n->width;
+		width = data->texture->wall_tex_n->width;
 	else if (data->n == 2)
-		width = data->texture->walltexteur_s->width;
+		width = data->texture->wall_tex_s->width;
 	else if (data->n == 3)
-		width = data->texture->walltexteur_e->width;
+		width = data->texture->wall_tex_e->width;
 	else if (data->n == 4)
-		width = data->texture->walltexteur_w->width;
+		width = data->texture->wall_tex_w->width;
 	return (width);
 }
 

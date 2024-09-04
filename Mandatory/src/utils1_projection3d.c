@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:41:31 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/04 12:47:21 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/04 22:39:38 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 void	ft_set_texteur(t_data *data, float wallheight, t_pos *t1, int offset_x)
 {
 	int				top;
-	mlx_texture_t	*walltexteur;
+	mlx_texture_t	*wall_tex;
 	uint32_t		texcolor;
 	int				y;
 
 	top = (WINDOW_HEIGHT / 2) - (wallheight / 2);
-	walltexteur = ft_texteur_valid(data);
-	y = ((t1->y - top) * walltexteur->width) / wallheight;
-	texcolor = get_pixel_color(walltexteur, offset_x, y);
+	wall_tex = ft_texteur_valid(data);
+	y = ((t1->y - top) * wall_tex->width) / wallheight;
+	texcolor = get_pixel_color(wall_tex, offset_x, y);
 	if (t1->x >= 0 && t1->x < data->mlx->width)
 		mlx_put_pixel(data->player->img_player, t1->x, t1->y, texcolor);
 }
@@ -40,16 +40,16 @@ float	ft_init_wallheight(t_data *data, float raydistance)
 
 mlx_texture_t	*ft_texteur_valid(t_data *data)
 {
-	mlx_texture_t	*walltexteur;
+	mlx_texture_t	*wall_tex;
 
-	walltexteur = NULL;
+	wall_tex = NULL;
 	if (data->n == 1)
-		walltexteur = data->texture->walltexteur_n;
+		wall_tex = data->texture->wall_tex_n;
 	else if (data->n == 2)
-		walltexteur = data->texture->walltexteur_s;
+		wall_tex = data->texture->wall_tex_s;
 	else if (data->n == 3)
-		walltexteur = data->texture->walltexteur_e;
+		wall_tex = data->texture->wall_tex_e;
 	else if (data->n == 4)
-		walltexteur = data->texture->walltexteur_w;
-	return (walltexteur);
+		wall_tex = data->texture->wall_tex_w;
+	return (wall_tex);
 }
