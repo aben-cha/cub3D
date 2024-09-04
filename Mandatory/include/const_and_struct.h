@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:46:39 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 22:39:38 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/04 22:42:28 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,11 @@ typedef struct s_ray
 
 typedef struct s_number
 {
-	int		n;
-	int 	s;
-	int		e;
-	int		w;
-} t_number;
+	int	n;
+	int	s;
+	int	e;
+	int	w;
+}			t_number;
 
 typedef struct s_data
 {

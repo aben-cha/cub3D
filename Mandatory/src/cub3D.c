@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:47:46 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 22:32:28 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/04 22:43:47 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	parsing(t_data *data, char *av)
 {
 	t_list	*head;
-	
+
 	fill_list(data, av);
 	is_valid_map(data);
 	init_data_player(data);

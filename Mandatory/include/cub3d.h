@@ -6,14 +6,14 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:23:02 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 22:36:53 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/04 22:43:20 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # include "const_and_struct.h"
-#include <stdio.h>
+
 void			parsing(t_data *data, char *av);
 void			ft_cub3d(t_data *data);
 int				ft_check_wall_intersection(t_data *data, float px, float py);
@@ -21,8 +21,9 @@ int				ft_check_wall(t_data *data, float x, float y);
 int				ft_update_position_player(t_data *data);
 void			ft_player(t_data *data);
 void			convert_abgr_to_rgba(t_data *data, mlx_texture_t *texture);
-int				load_png(t_data *data, mlx_texture_t **mlx_texture, char *path, char c);
-void 			load_textures(t_data *data, t_list *head);
+int				load_png(t_data *data, mlx_texture_t **mlx_texture, char *path,
+					char c);
+void			load_textures(t_data *data, t_list *head);
 int				ft_init_offset(t_data *data, t_ray *ray, int sig);
 void			ft_prepare_projection(t_data *data, float x, float raydis,
 					t_pos *t1);
