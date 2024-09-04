@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_data_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:06:42 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/03 22:29:54 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:46:12 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	free_data_mlx(t_data *data, int flag)
 	mlx_delete_texture(data->texture->walltexteur_e);
 	mlx_delete_texture(data->texture->walltexteur_s);
 	mlx_delete_texture(data->texture->walltexteur_w);
+	mlx_delete_texture(data->texture->walltexteur_d);
 	if (flag == 2 || flag == 3 || flag == 4)
 	{
 		mlx_delete_image(data->mlx, data->player->img_player);
