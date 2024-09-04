@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1_projection3d_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:43:31 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/04 02:00:26 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:49:38 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ float	ft_init_wallheight(t_data *data, float raydistance)
 	float	d_projectplan;
 	float	wallheight;
 
-	d_projectplan = ((float)data->mlx->width / 2.0) / tan(FOV_ANGLE / 2.0);
+	d_projectplan = ((float)data->mlx->width / 2.0)
+		/ tan((60 * (M_PI / 180)) / 2.0);
 	wallheight = ((float)TILE_SIZE / raydistance) * d_projectplan;
 	return (wallheight);
 }

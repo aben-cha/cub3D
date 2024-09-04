@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   const_and_struct_bonus.h                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/04 12:50:32 by aben-cha          #+#    #+#             */
+/*   Updated: 2024/09/04 12:57:20 by aben-cha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CONST_AND_STRUCT_BONUS_H
 # define CONST_AND_STRUCT_BONUS_H
-
-# include <stdio.h>
 # include <math.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -9,7 +19,6 @@
 # include "../src/libft/libft.h"
 # include "../src/get_next_line/get_next_line.h"
 # include "MLX42.h"
-
 # define N_IMAGES_WAIT 6
 # define N_IMAGES_SHOT 14
 # define N_IMAGES_LOAD 37
@@ -20,7 +29,6 @@
 # define NBR_RAYS 1500
 # define WINDOW_WHIDTH 1500
 # define WINDOW_HEIGHT 900
-# define FOV_ANGLE (60 * (M_PI / 180))
 
 typedef struct s_player
 {

@@ -21,7 +21,7 @@ void	ft_cast_all_rays(t_data *data)
 	float	rayangle;
 
 	i = 0;
-	rayangle = data->player->rotangle - (FOV_ANGLE / 2);
+	rayangle = data->player->rotangle - ((60 * (M_PI / 180)) / 2);
 	while (i < NBR_RAYS)
 	{
 		ray = malloc(sizeof(t_ray));
@@ -35,7 +35,7 @@ void	ft_cast_all_rays(t_data *data)
 		ft_rays_where_is_facing(&vertical, rayangle);
 		data->rayangle = rayangle;
 		ft_which_ray_used(data, &vertical, &horizontal, i);
-		rayangle += FOV_ANGLE / NBR_RAYS;
+		rayangle += (60 * (M_PI / 180)) / NBR_RAYS;
 		free(ray);
 		i++;
 	}

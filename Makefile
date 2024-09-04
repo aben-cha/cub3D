@@ -3,12 +3,12 @@ NAME = cub3D
 NAMEB = cub3D_bonus
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -ofast
-LDFLAGS =  -lmlx42 -lglfw
+LDFLAGS = -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib" -L. -lmlx42 -framework OpenGL -framework AppKit
 RM = rm -f
 SRC_DIR_MANDATORY = Mandatory/src
 SRC_DIR_BONUS = Bonus/src
 
-SRC = $(SRC_DIR_MANDATORY)/main.c \
+SRC = $(SRC_DIR_MANDATORY)/cub3D.c \
 	  $(SRC_DIR_MANDATORY)/ft_player.c \
 	  $(SRC_DIR_MANDATORY)/utils_player.c \
 	  $(SRC_DIR_MANDATORY)/update_env.c \
@@ -28,7 +28,7 @@ SRC = $(SRC_DIR_MANDATORY)/main.c \
 	  $(SRC_DIR_MANDATORY)/get_next_line/get_next_line_utils.c \
 	  $(SRC_DIR_MANDATORY)/parse/linked_list.c
 
-BONUS = $(SRC_DIR_BONUS)/main_bonus.c \
+BONUS = $(SRC_DIR_BONUS)/cub3D_bonus.c \
 		$(SRC_DIR_BONUS)/ft_player_bonus.c \
 		$(SRC_DIR_BONUS)/draw_env_bonus.c \
 		$(SRC_DIR_BONUS)/update_env_bonus.c \

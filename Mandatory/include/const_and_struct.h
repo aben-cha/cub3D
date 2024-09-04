@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   const_and_struct.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:46:39 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 01:49:12 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:42:12 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define NBR_RAYS 1500
 # define WINDOW_WHIDTH 1500 
 # define WINDOW_HEIGHT 900
-# define FOV_ANGLE (60 * (M_PI / 180))
 # define TILE_MAP 250
 
 typedef struct s_player
