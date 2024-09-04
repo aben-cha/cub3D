@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:01:00 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/03 22:43:54 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/04 01:57:52 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_cub3d(t_data *data)
 int	main(int ac, char **av)
 {
 	t_data	data_mlx;
-
+	(void)ac;
 	parsing(&data_mlx, av[1]);
 	ft_cub3d(&data_mlx);
 	mlx_loop_hook(data_mlx.mlx, ft_update_env, &data_mlx);

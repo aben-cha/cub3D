@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   const_and_struct.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:46:39 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/03 11:01:17 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/04 01:49:12 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONST_AND_STRUCT_H
 # define CONST_AND_STRUCT_H
+
 # include <math.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -39,7 +40,7 @@ typedef struct s_player
 	float		movespeed;
 	float		rotspeed;
 	mlx_image_t	*img_player;
-}				t_player;
+}	t_player;
 
 typedef struct s_texture
 {
@@ -47,7 +48,7 @@ typedef struct s_texture
 	mlx_texture_t	*walltexteur_s;
 	mlx_texture_t	*walltexteur_w;
 	mlx_texture_t	*walltexteur_e;
-}				t_texture;
+}	t_texture;
 
 typedef struct s_map
 {
@@ -55,14 +56,14 @@ typedef struct s_map
 	int			height;
 	char		**arr_map;
 	mlx_image_t	*img_map;
-}				t_map;
+}	t_map;
 
 typedef struct s_color
 {
 	int	red;
 	int	green;
 	int	blue;
-}				t_color;
+}	t_color;
 
 typedef struct s_element
 {

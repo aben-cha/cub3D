@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils1_projection3d.c                              :+:      :+:    :+:   */
+/*   utils1_projection3d_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:43:31 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/02 17:06:24 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/04 02:00:26 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ mlx_texture_t	*ft_texteur_valid(t_data *data)
 {
 	mlx_texture_t	*walltexteur;
 
+	walltexteur = NULL;
 	if (data->n == 1)
 		walltexteur = data->texture->walltexteur_n;
 	else if (data->n == 2)

@@ -1,22 +1,13 @@
-# Compiler and project names
 CC = cc
 NAME = cub3D
 NAMEB = cub3D_bonus
-
-# MiniLibX library and compiler flags
-MLX = libmlx42.a
-CFLAGS = -g -fsanitize=address #-Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -ofast
-LDFLAGS = -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib" -L. -lmlx42 -framework OpenGL -framework AppKit
-
-# Clean command
+LDFLAGS =  -lmlx42 -lglfw
 RM = rm -f
-
-# Source directories
 SRC_DIR_MANDATORY = Mandatory/src
 SRC_DIR_BONUS = Bonus/src
 
-# Source files for mandatory and bonus builds
 SRC = $(SRC_DIR_MANDATORY)/main.c \
 	  $(SRC_DIR_MANDATORY)/ft_player.c \
 	  $(SRC_DIR_MANDATORY)/utils_player.c \
@@ -70,10 +61,10 @@ all: $(NAME)
 
 bonus: $(NAMEB)
 
-$(NAME): $(OBJ_MANDATORY) $(MLX) $(LIBFT)
+$(NAME): $(OBJ_MANDATORY) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ_MANDATORY) $(LIBFT) -o $(NAME) $(LDFLAGS)
 
-$(NAMEB): $(OBJ_BONUS) $(MLX) $(LIBFTB)
+$(NAMEB): $(OBJ_BONUS) $(LIBFTB)
 	$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFTB) -o $(NAMEB) $(LDFLAGS)
 
 $(LIBFT):

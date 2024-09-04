@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_projection3d.c                               :+:      :+:    :+:   */
+/*   utils_projection3d_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:41:51 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/02 17:06:24 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/04 02:00:07 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ uint32_t	get_pixel_color(mlx_texture_t *texture, int x, int y)
 {
 	int	index;
 
-	if (x < 0 || x >= texture->width || y < 0 || y >= texture->height)
+	if (x < 0 || (uint32_t)x >= texture->width || y < 0
+		|| (uint32_t)y >= texture->height)
 		return (0);
 	index = (y * texture->width) + x;
 	return (((uint32_t *)texture->pixels)[index]);

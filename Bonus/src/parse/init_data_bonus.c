@@ -6,7 +6,7 @@
 /*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:13:07 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/03 22:54:02 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/04 02:01:19 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	init_data_player(t_data *data)
 	data->player->radius = 5;
 	data->player->turndir = 0;
 	data->player->walkdirection = 1;
-	data->player->movespeed = 100;
+	data->player->movespeed = 200;
 	data->player->view_player = 0;
 	data->player->rotspeed = 20 * (M_PI / 180);
 	if (data->player->isfacing == '0')

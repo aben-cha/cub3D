@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:23:02 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/03 15:35:39 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/04 00:27:46 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void			load_png(t_data *data, mlx_texture_t **mlx_texture, char *path);
 void			load_textures(t_data *data);
 
 //projection3d.c
-int				ft_init_offset(t_ray *ray, int sig);
+int             ft_init_offset(t_data *data,t_ray *ray, int sig);
 void			ft_prepare_projection(t_data *data, float x, float raydis, t_pos *t1);
 void			ft_draw_projection(t_data *data, t_pos t1, int sig, t_ray *ray);
 void			ft_projection3d(t_data *data, float x, int sig, t_ray *ray);

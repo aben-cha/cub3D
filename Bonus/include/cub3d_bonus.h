@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:01 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/03 18:45:18 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/04 01:46:43 by ataoufik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void			loading_sprites(t_data *data);
 void			mouse(void *param);
 
 //projection3d.c
-int				ft_init_offset(t_ray *ray, int sig);
+uint32_t        ft_width_texteur(t_data *data);
+int             ft_init_offset(t_data *data,t_ray *ray, int sig);
 void			ft_prepare_projection(t_data *data, float x, float raydis, t_pos *t1);
 void			ft_draw_projection(t_data *data, t_pos t1, int sig, t_ray *ray);
 void			ft_projection3d(t_data *data, float x, int sig, t_ray *ray);
@@ -142,6 +143,5 @@ int				check_wall(char *s, char c);
 int				another_char(char *s, char *ptr);
 int				is_adjacent(t_data *data, char **map);
 void			set_element(t_data *data, char *s, int *size, char c);
-
 
 #endif
