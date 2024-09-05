@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:50:32 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 22:39:38 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/05 12:19:30 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,15 @@ typedef struct s_ray
 	float	ray_angle;
 }	t_ray;
 
+typedef struct s_number
+{
+	int	n;
+	int	s;
+	int	e;
+	int	w;
+	int	d;
+}			t_number;
+
 typedef struct s_data
 {
 	int			j;
@@ -132,6 +141,7 @@ typedef struct s_data
 	t_animation	*animation;
 	t_player	*player;
 	t_ray		*ray;
+	t_number	number;
 }	t_data;
 
 typedef struct s_position

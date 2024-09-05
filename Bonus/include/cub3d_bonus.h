@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:01 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 19:59:03 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/05 15:20:53 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ void			ft_load_imges_shot(t_data *data, char *str1);
 void			ft_load_imges_load(t_data *data, char *str1);
 void			load_images(t_data *data);
 void			convert_abgr_to_rgba(t_data *data, mlx_texture_t *texture);
-void			load_png(t_data *data, mlx_texture_t **mlx_texture, char *path);
-void			load_textures(t_data *data);
+int				load_png(t_data *data, mlx_texture_t **mlx_texture,
+					char *path, char c);
+void			load_textures(t_data *data, t_list *head);
 void			loading_sprites(t_data *data);
 void			mouse(void *param);
 uint32_t		ft_width_texteur(t_data *data);

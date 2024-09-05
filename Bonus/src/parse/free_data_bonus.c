@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:06:42 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 22:39:38 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/05 15:17:46 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,14 @@ void	free_data(t_data *data, int flag)
 
 void	delete_textures(mlx_texture_t **textures, int i)
 {
-	while (--i)
-		mlx_delete_texture(textures[i]);
+	int	j;
+
+	j = 0;
+	while (j < i)
+	{
+		mlx_delete_texture(textures[j]);
+		j++;
+	}
 }
 
 void	free_data_mlx(t_data *data, int flag)
@@ -63,8 +69,8 @@ void	free_data_mlx(t_data *data, int flag)
 	}
 	if (flag == 3 || flag == 4)
 	{
-		delete_textures(data->animation->textures_wait, N_IMAGES_WAIT + 1);
-		delete_textures(data->animation->textures_shot, N_IMAGES_SHOT + 1);
+		delete_textures(data->animation->textures_wait, N_IMAGES_WAIT);
+		delete_textures(data->animation->textures_shot, N_IMAGES_SHOT);
 		delete_textures(data->animation->textures_load, N_IMAGES_LOAD);
 	}
 	free_array(data->map->arr_map);

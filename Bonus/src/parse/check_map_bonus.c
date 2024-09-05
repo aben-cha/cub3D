@@ -57,8 +57,7 @@ void	join_space(t_data *data, int size, int *i)
 		data->j = 0;
 		while (++(data->j) <= (data->map->width - size))
 		{
-			data->map->arr_map[*i] = ft_free(data->map->arr_map[*i],
-					ft_strdup(" "));
+			data->map->arr_map[*i] = ft_free(data->map->arr_map[*i], " ");
 			if (!data->map->arr_map[*i])
 			{
 				free_memory(data->map->arr_map, *i);

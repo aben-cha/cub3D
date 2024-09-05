@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:16:25 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 22:39:38 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/05 15:18:39 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,34 +37,70 @@ void	convert_abgr_to_rgba(t_data *data, mlx_texture_t *texture)
 	}
 }
 
-void	load_png(t_data *data, mlx_texture_t **mlx_texture, char *path)
+void	free_textures(t_data *data, t_number *number)
+{
+	if (number->n == 1)
+		mlx_delete_texture(data->texture->wall_tex_n);
+	if (number->s == 1)
+		mlx_delete_texture(data->texture->wall_tex_s);
+	if (number->e == 1)
+		mlx_delete_texture(data->texture->wall_tex_e);
+	if (number->w == 1)
+		mlx_delete_texture(data->texture->wall_tex_w);
+	if (number->d == 1)
+		mlx_delete_texture(data->texture->wall_tex_d);
+	print_error("load png.");
+}
+
+int	load_png(t_data *data, mlx_texture_t **mlx_texture, char *path, char c)
 {
 	*mlx_texture = mlx_load_png(path);
 	if (!*mlx_texture)
 	{
 		free_array(data->map->arr_map);
 		free_data(data, 1);
-		print_error("Error load png.");
+		if (c == 'D')
+			data->number.d = 0;
+		if (c == 'N')
+			data->number.n = 0;
+		if (c == 'S')
+			data->number.s = 0;
+		if (c == 'E')
+			data->number.e = 0;
+		if (c == 'W')
+			data->number.w = 0;
+		free_textures(data, &data->number);
+		return (1);
 	}
 	convert_abgr_to_rgba(data, *mlx_texture);
+	return (0);
 }
 
-void	load_textures(t_data *data)
+void	load_textures(t_data *data, t_list *head)
 {
-	t_list	*head;
-
-	head = data->texturel;
-	load_png(data, &data->texture->wall_tex_d, "./texture/door.png");
+	load_png(data, &data->texture->wall_tex_d, "./texture/door.png", 'D');
 	while (head)
 	{
 		if (head->c == 'N')
-			load_png(data, &data->texture->wall_tex_n, head->content);
+		{
+			data->number.n = 1;
+			load_png(data, &data->texture->wall_tex_n, head->content, head->c);
+		}
 		else if (head->c == 'S')
-			load_png(data, &data->texture->wall_tex_s, head->content);
+		{
+			data->number.s = 1;
+			load_png(data, &data->texture->wall_tex_s, head->content, head->c);
+		}
 		else if (head->c == 'E')
-			load_png(data, &data->texture->wall_tex_e, head->content);
+		{
+			data->number.e = 1;
+			load_png(data, &data->texture->wall_tex_e, head->content, head->c);
+		}
 		else if (head->c == 'W')
-			load_png(data, &data->texture->wall_tex_w, head->content);
+		{
+			data->number.w = 1;
+			load_png(data, &data->texture->wall_tex_w, head->content, head->c);
+		}
 		head = head->next;
 	}
 }
@@ -96,18 +132,4 @@ void	loading_sprites(t_data *data)
 			data->counter = 0;
 		}
 	}
-}
-
-void	mouse(void *param)
-{
-	t_data	*data;
-	int		x;
-	int		y;
-
-	data = (t_data *)param;
-	mlx_get_mouse_pos(data->mlx, &x, &y);
-	data->player->rotangle += (float)(x
-			- (WINDOW_WHIDTH / 2)) / (WINDOW_HEIGHT / 2);
-	mlx_set_mouse_pos(data->mlx, WINDOW_WHIDTH / 2, WINDOW_HEIGHT / 2);
-	ft_player(data);
 }

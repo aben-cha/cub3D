@@ -28,12 +28,12 @@ int	set_color(t_color *color, char *color_path, int i)
 	}
 	type = ft_split(color_path, ',');
 	if (!type)
-		return (free(color_path), 1);
+		return (1);
 	i = -1;
 	while (type && type[++i])
 	{
 		if (ft_atoi(type[i]) > 255 || i == 3)
-			return (free_memory(type, i), 1);
+			return (free_array(type), 1);
 	}
 	color->red = ft_atoi(type[0]);
 	color->green = ft_atoi(type[1]);

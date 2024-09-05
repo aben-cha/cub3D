@@ -1,7 +1,7 @@
 CC = cc
 NAME = cub3D
 NAMEB = cub3D_bonus
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 CFLAGS += -ofast
 LDFLAGS = -lglfw -lmlx42 
 RM = rm -f

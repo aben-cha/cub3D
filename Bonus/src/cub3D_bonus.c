@@ -6,18 +6,35 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:48:49 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 20:32:02 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/05 15:19:54 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d_bonus.h"
 
+void	mouse(void *param)
+{
+	t_data	*data;
+	int		x;
+	int		y;
+
+	data = (t_data *)param;
+	mlx_get_mouse_pos(data->mlx, &x, &y);
+	data->player->rotangle += (float)(x
+			- (WINDOW_WHIDTH / 2)) / (WINDOW_HEIGHT / 2);
+	mlx_set_mouse_pos(data->mlx, WINDOW_WHIDTH / 2, WINDOW_HEIGHT / 2);
+	ft_player(data);
+}
+
 void	parsing(t_data *data, char *av)
 {
+	t_list	*head;
+
 	fill_list(data, av);
 	is_valid_map(data);
 	init_data_player(data);
-	load_textures(data);
+	head = data->texturel;
+	load_textures(data, head);
 }
 
 void	image_to_window(t_data *data)
