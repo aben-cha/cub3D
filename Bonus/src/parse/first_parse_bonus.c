@@ -53,9 +53,9 @@ int	check_char(char *s)
 		return (1);
 	else if ((s[0] == 'N' || s[0] == 'S') && (s[1] != 'O' || s[2] != ' '))
 		return (1);
-	else if ((s[0] == 'E' || s[1] == 'A') && s[2] != ' ')
+	else if ((s[0] == 'E' && s[1] == 'A') && s[2] != ' ')
 		return (1);
-	else if ((s[0] == 'W' || s[1] == 'E') && s[2] != ' ')
+	else if ((s[0] == 'W' && s[1] == 'E') && s[2] != ' ')
 		return (1);
 	return (0);
 }
