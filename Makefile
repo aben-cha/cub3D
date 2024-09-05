@@ -1,7 +1,7 @@
 CC = cc
 NAME = cub3D
 NAMEB = cub3D_bonus
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror 
 CFLAGS += -ofast
 LDFLAGS = -lglfw -lmlx42 
 RM = rm -f
@@ -67,13 +67,13 @@ $(NAME): $(OBJ_MANDATORY) $(LIBFT)
 $(NAMEB): $(OBJ_BONUS) $(LIBFTB)
 	$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFTB) -o $(NAMEB) $(LDFLAGS)
 
-$(LIBFT):
+$(LIBFT):$(SRC_DIR_MANDATORY)/libft/libft.h
 	$(MAKE) -C $(SRC_DIR_MANDATORY)/libft
 
-$(LIBFTB):
+$(LIBFTB):$(SRC_DIR_BONUS)/libft/libft.h
 	$(MAKE) -C $(SRC_DIR_BONUS)/libft
 
-%.o: %.c
+%.o: %.c Mandatory/include/cub3d.h Mandatory/include/const_and_struct.h Bonus/include/cub3d_bonus.h Bonus/include/const_and_struct_bonus.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
