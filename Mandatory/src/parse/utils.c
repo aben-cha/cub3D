@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 11:42:27 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 20:26:20 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/05 10:00:10 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	is_adjacent(t_data *data, char **map)
 		x = 0;
 		while (++x < data->map->width - 1)
 		{
-			if (!another_char(data->map->arr_map[y], "01NSEWDC "))
+			if (!another_char(data->map->arr_map[y], "01NSEW "))
 				return (free_array(data->map->arr_map), free_data(data, 1),
 					print_error("another char exist"), 1);
 			if (map[y][x] == '0' || map[y][x] == data->player->isfacing)

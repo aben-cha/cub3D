@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 10:42:14 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/04 22:41:03 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/05 09:42:07 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	free_textures(t_data *data, t_number *number)
 		mlx_delete_texture(data->texture->wall_tex_e);
 	if (number->w == 1)
 		mlx_delete_texture(data->texture->wall_tex_w);
-	print_error("Error load png.");
+	print_error("load png.");
 }
 
 int	load_png(t_data *data, mlx_texture_t **mlx_texture, char *path, char c)
@@ -57,7 +57,6 @@ int	load_png(t_data *data, mlx_texture_t **mlx_texture, char *path, char c)
 	{
 		free_array(data->map->arr_map);
 		free_data(data, 1);
-		printf("c : %c\n", c);
 		if (c == 'N')
 			data->number.n = 0;
 		if (c == 'S')
