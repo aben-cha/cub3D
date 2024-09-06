@@ -6,7 +6,7 @@
 /*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 20:32:59 by ataoufik          #+#    #+#             */
-/*   Updated: 2024/09/05 15:16:23 by aben-cha         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:57:14 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_load_imges_wait(t_data *data, char *str1)
 		free(str);
 		if (!data->animation->textures_wait[i])
 		{
-			delete_textures(data->animation->textures_wait, i + 1);
+			delete_textures(data->animation->textures_wait, i);
 			free_data_mlx(data, 2);
 			print_error("Failed to load texture.");
 		}
@@ -68,9 +68,9 @@ void	ft_load_imges_shot(t_data *data, char *str1)
 		}
 		data->animation->textures_shot[i] = mlx_load_png(str);
 		free(str);
-		if (!data->animation->textures_wait[i])
+		if (!data->animation->textures_shot[i])
 		{
-			delete_textures(data->animation->textures_shot, i + 1);
+			delete_textures(data->animation->textures_shot, i);
 			delete_textures(data->animation->textures_wait, N_IMAGES_WAIT);
 			free_data_mlx(data, 2);
 			print_error("Failed to load texture.");
@@ -99,7 +99,7 @@ void	ft_load_imges_load(t_data *data, char *str1)
 		free(str);
 		if (!data->animation->textures_load[i])
 		{
-			delete_textures(data->animation->textures_load, i + 1);
+			delete_textures(data->animation->textures_load, i);
 			delete_textures(data->animation->textures_shot, N_IMAGES_SHOT);
 			delete_textures(data->animation->textures_wait, N_IMAGES_WAIT);
 			free_data_mlx(data, 2);
@@ -115,7 +115,6 @@ void	load_images(t_data *data)
 	data->animation->delay_counter_wait = 0;
 	data->animation->current_frame = 0;
 	data->animation->frame_delay = 3;
-	data->animation->frame_delay_load = 6;
 	data->animation->delay_counter = 3;
 	ft_load_imges_wait(data, "Bonus/png/wait/wait_");
 	ft_load_imges_shot(data, "Bonus/png/shot/shot_");

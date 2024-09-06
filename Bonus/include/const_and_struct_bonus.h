@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   const_and_struct_bonus.h                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataoufik <ataoufik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-cha <aben-cha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:50:32 by aben-cha          #+#    #+#             */
-/*   Updated: 2024/09/05 16:11:44 by ataoufik         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:39:26 by aben-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ typedef struct s_animaction
 	int				current_frame;
 	int				frame_delay;
 	int				delay_counter;
-	int				frame_delay_load;
 	int				delay_counter_load;
 	mlx_texture_t	*textures_wait[N_IMAGES_WAIT];
 	mlx_texture_t	*textures_shot[N_IMAGES_SHOT];
