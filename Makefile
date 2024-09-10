@@ -1,9 +1,9 @@
 CC = cc
 NAME = cub3D
 NAMEB = cub3D_bonus
-CFLAGS = -Wall -Wextra -Werror 
-CFLAGS += -ofast
-LDFLAGS = -lglfw -lmlx42 
+CFLAGS = -Wall -Wextra -Werror
+CFLAGS += -Ofast
+LDFLAGS = -lglfw -lmlx42
 RM = rm -f
 SRC_DIR_MANDATORY = Mandatory/src
 SRC_DIR_BONUS = Bonus/src
@@ -59,21 +59,22 @@ OBJ_BONUS = $(BONUS:.c=.o)
 
 all: $(NAME)
 
-bonus: $(NAMEB)
-
 $(NAME): $(OBJ_MANDATORY) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ_MANDATORY) $(LIBFT) -o $(NAME) $(LDFLAGS)
 
-$(NAMEB): $(OBJ_BONUS) $(LIBFTB)
+bonus: $(OBJ_BONUS) $(LIBFTB)
 	$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFTB) -o $(NAMEB) $(LDFLAGS)
 
-$(LIBFT):$(SRC_DIR_MANDATORY)/libft/libft.h
+$(LIBFT): $(SRC_DIR_MANDATORY)/libft/libft.h
 	$(MAKE) -C $(SRC_DIR_MANDATORY)/libft
 
-$(LIBFTB):$(SRC_DIR_BONUS)/libft/libft.h
+$(LIBFTB): $(SRC_DIR_BONUS)/libft/libft.h
 	$(MAKE) -C $(SRC_DIR_BONUS)/libft
 
-%.o: %.c Mandatory/include/cub3d.h Mandatory/include/const_and_struct.h Bonus/include/cub3d_bonus.h Bonus/include/const_and_struct_bonus.h
+$(SRC_DIR_MANDATORY)/%.o: $(SRC_DIR_MANDATORY)/%.c Mandatory/include/cub3d.h Mandatory/include/const_and_struct.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(SRC_DIR_BONUS)/%.o: $(SRC_DIR_BONUS)/%.c Bonus/include/cub3d_bonus.h Bonus/include/const_and_struct_bonus.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
